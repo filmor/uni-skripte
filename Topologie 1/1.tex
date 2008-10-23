@@ -1,17 +1,221 @@
-
-\begin{defn}[Metrik]
-    Eine Abbildung $d: X \times X \to \mathbb{R}$ hei\ss{}t Metrik, wenn
+\section{Grundlagen}
+\begin{dfn}
+    Eine Abbildung $d: X \times X \to \R$ heißt Metrik, wenn
+    $\forall x,y,z \in X$
     \begin{itemize}
-    \item $d(x, x) = 0 \forall x \in X$
+    \item $d(x, y) = 0 \quad \Equiv \quad x = y$
     \item $d(x, y) = d(y, x)$
     \item $d(x, z) \leq d(x, y) + d(y, z)$
     \end{itemize}
-\end{defn}
-
-\begin{beis}[diskrete Metrik]
-\end{beis}
-
-\begin{defn}[metrischer Raum]
     Ein Paar $(X, d)$ aus einer Menge $X$ und einer Metrik $d$ auf dieser
-    Menge hei\ss{}t \emph{metrischer Raum}.
-\end{defn}
+    Menge heißt \emph{metrischer Raum}.    
+\end{dfn}
+
+\begin{bsp}[euklidische diskrete Metrik]
+\end{bsp}
+
+\begin{bsp}[euklidische Metrik]
+\end{bsp}
+
+\begin{bsp}[Unterraummetrik]
+\end{bsp}
+
+\begin{bsp}
+    $M \subset \R$
+\end{bsp}
+
+\begin{dfn}[Stetigkeit]
+    Eine Abbildung $f: X \to Y$ auf metrischen Räumen $(X,d_X)$ und $(Y, d_Y)$ heißt
+    \emph{stetig im Punkt $x_0$}, falls für alle $\epsilon$ ein $\delta$ existiert
+    so dass gilt:
+    \begin{align*}
+        d_X(x_0, x) < \delta& &\Rightarrow& &d_Y(f(x_0), f(x)) < \epsilon
+    \end{align*}
+    Die Abbildung heißt stetig, wenn dies für alle $x_0\in X$ gilt.
+\end{dfn}
+
+\begin{dfn}[Folgenkonvergenz]
+    Eine Folge $(a_n)$ mit Werten im metrischen Raum $(X, d)$ konvergiert gegen den
+    Grenzwert $a$, falls \begin{align*}
+        \forall \epsilon > 0 \exists N, &\text{s.d.}& \forall n > N: d(a, a_n) < \epsilon
+    \end{align*}
+\end{dfn}
+
+\begin{stz}
+    Eine Folge hat immer höchstens einen Grenzwert.
+\end{stz}
+
+\begin{stz}
+    Eine Abbildung $f: X \to Y$ auf metrischen Räumen $(X, d_X)$ und $(Y, d_Y)$ ist
+    genau dann stetig in $x_0$, wenn für alle in $X$ gegen $x_0$ konvergenten Folgen
+    $x_n$ gilt: \[\lim_{n\to \infty} f(x_n) = f(x_0)\]
+\end{stz}
+
+\begin{axm}[Auswahlaxiom]
+    Sei $B$ eine Menge. Dann $\exists c: B \to \bigcup_{x\in B} X$ mit $c(x)\in X$.   
+\end{axm}
+
+\begin{dfn}
+    Sei $X$ eine Menge, $d_1$, $d_2$ Metriken auf X. $d_1$ und $d_2$ heißen
+    \emph{äquivalent} falls
+    \[id: (X, d_1) \to (X, d_2) \quad \text{und}\quad id: (X, d_2) \to (X, d_2)\]
+    stetig sind.
+
+\begin{bem}
+    $d_1$ und $d_2$ seien äquivalente Metriken auf $X$, $(Y, d')$ metrischer Raum
+    \[\{f:(X, d_1) \to (Y, d') | f \text{stetig} \} = \text{bla}\]
+\end{bem}
+\end{dfn}
+
+\begin{stz}
+    Sei $X$ eine Menge, $d_1$ und $d_2$ Metriken. Existieren $c_1, c_2: X\to
+    \R^+$ so dass
+    \[c_1(x)d_1(x, y) \leq d_2(x,y) \leq c_2(x)d_1(x,y) \forall x,y \in X\text{,}\]
+    dann sind $d_1$ und $d_2$ äquivalent.
+\end{stz}
+
+\begin{dfn}
+    Eine \emph{Norm} auf dem \menge{K}-Vektorraum $V$ ist eine Abbildung
+    $\norm{\cdot}: V \to \R^+_0$ mit den Eigenschaften
+    \begin{itemize}
+        \item $\norm{x} = 0 \quad \Equiv \quad x = 0$
+        \item $\norm{\lambda x} = |\lambda| \norm{x} \
+                    \quad \forall x \in V, \lambda \in \menge{K}$
+        \item $\|x + z\| \leq \|x + y\| + \|y + z\| \quad \forall x,y,z \in V$
+    \end{itemize}
+    Das Paar $(X, \norm{\cdot})$ heißt \emph{normierter Raum}.
+\end{dfn}
+
+\begin{stz}
+    Sei $(V, \norm{\cdot}$ ein normierter Raum, dann ist $d(u,v) := \norm{u - v}$
+    eine Metrik auf $V$.
+\end{stz}
+
+\begin{dfn}
+    Sei $A$ eine Menge, $\R^A$ der \R-Vektorraum aller Funktionen $\R \to A$,
+    $B(A) = \mdef[f\in\R^A]{\exists k\in\N\!: \norm{f(a)} < k \ \forall a \in A}$
+    der Unterraum der beschränkten Funktionen und $\supnorm{\cdot}: B(A) \to \R$
+    mit $\supnorm{f} := \sup \mdef[\norm{f(a)}]{a\in A}$. Dann ist
+    $\supnorm{\cdot}$ eine Norm auf $B(A)$.
+\end{dfn}
+
+\begin{bsp}
+    $A = \mdef{1,\ldots,n}\subset \N$, dann gilt $B(A) = \R^n$ und wir haben
+    die Metrik $d_\infty: \R^n \times \R^n \to \R$, die von $\supnorm{\cdot}$
+    erzeugt wird. $d_\infty$ und die euklidische Metrik sind äquivalent.
+    Es gilt:
+    \[d_\infty(x,y) \le d(x,y) \le \sqrt{n}\ d_\infty(x,y) \quad \forall x,y\in\R^n\]
+\end{bsp}
+
+\newtheorem{wbsp}[dfn]{weitere Beispiele}
+\begin{wbsp}
+    \begin{itemize}
+        \item ${l}^\infty = B(\N)$ mit $\supnorm{\cdot}$
+        \item ${l}^p \subset B(\N)$ mit
+                $\norm[p]{f} = \sqrt[p]{\sum^\infty_{i=1} \norm{f(i)}^p}$
+        \item $\R^\N = \mdef[f \in B(\N)]{bla}$
+    \end{itemize}
+\end{wbsp}
+
+\begin{dfn}
+    (gleichmäßige und punktweise Konvergenz)
+\end{dfn}
+
+\begin{stz}
+    Konvergiert $(f_n)_{n\in\N} \to f$ gleichmäßig, dann ist falls alle $f_n$
+    stetig sind auch $f$ stetig.
+\end{stz}
+
+\begin{dfn}
+    Kugeln
+\end{dfn}
+
+\begin{dfn}
+    Offen
+\end{dfn}
+
+\begin{lem}
+    Sei $(X, d)$ ein metrischer Raum. Dann ist $B_\epsilon(x)$ offen
+    $\forall \epsilon > 0$.
+\end{lem}
+
+\begin{lem}
+    X und leere Menge sind offen.
+\end{lem}
+
+\begin{stz}
+    Sei $f: (X, d) \to (Y, d')$ eine Abbildung zwischen metrischen Räumen. Dann sind
+    äquivalent:
+   \begin{itemize}
+        \item $f$ ist stetig in $x_0$
+        \item Zu jeder Umgebung $U$ von $f(x_0)$ gibt es eine Umgebung $W$ von $x_0$
+              mit $f(W)\subset V$
+    \end{itemize}
+\end{stz}
+
+\begin{stz}
+    Sei $f: (X, d) \to (Y, d')$ eine Abbildung zwischen metrischen Räumen. Dann sind
+    äquivalent:
+    \begin{itemize}
+        \item $f$ ist stetig
+        \item $\forall U \subset Y$ offen ist auch $f^{-1}(U)$ offen
+    \end{itemize}
+\end{stz}
+
+\begin{krl}
+    $(X,d) \overset{f}{\to} (Y,d') \overset{g}{\to} (Z, d'')$ mit $f,g$ stetig, dann
+    ist auch $g \circ f$ stetig.
+\end{krl}
+
+\begin{bsp}
+    Die Abbildung $\chi_{(-\infty,0]}$ ist nicht stetig in 0. Es gibt keine Umgebung
+    von 0, so dass $f(W) \subset B_1(f(0))$.
+\end{bsp}
+
+\begin{bem}
+    Die Menge der offenen Teilmengen von Räumen genügt, um Stetigkeit zu
+    charakterisieren.
+\end{bem}
+
+\begin{stz}
+    Seien $d_1$ und $d_2$ Metriken auf $X$. Dann sind äquivalent:
+    \begin{itemize}
+        \item $d_1$ und $d_2$ sind äquivalente Metriken
+        \item Die Menge $U \subset X$ ist genau dann in $(X, d_1)$ offen, wenn sie
+              auch in $(X, d_2)$ offen ist.
+    \end{itemize}
+\end{stz}
+
+\begin{stz}
+    $(X,d)$ sei metrischer Raum und $T = \mdef[U\subset X]{U\ \text{ offen}}$.
+    Dann gelten:
+    \begin{enumerate}
+        \item $\emptyset, X \in T$
+        \item $I \subset T$, dann gilt $\bigcup_{U\in I} U \in T$
+        \item $\mdef{U_1, \ldots, U_n} \subset T$, dann gilt
+              $\bigcap_{i=1}^n \in T$
+    \end{enumerate}
+\end{stz}
+
+\begin{stz}
+    Sei $(X, d)$ metrischer Raum.
+    \begin{enumerate}
+        \item $x,y \in X$, $x \ne y$, dann existieren Umgebungen $U$ von $x$ und $V$
+              von $y$ so dass $U \cap V = \emptyset$.
+        \item $x \in X$, dann existiert eine Folge $(U_n)_{n\in \N}$ von Umgebungen
+            von x so dass für jede Umgebung $V$ von $x$ ein $N\in\N$ existiert mit
+            $U_n \subset V$ für $n > N$.
+    \end{enumerate}
+\end{stz}
+
+\begin{stz}
+    $(X, d)$ metrischer Raum, $U \subset X$. Dann sind äquivalent:
+    \begin{itemize}
+        \item $U$ ist offen
+        \item $U$ ist eine Vereinigung offener Kugeln
+    \end{itemize}
+\begin{bem}
+    Sei $(X, d)$ diskreter Raum, dann bla
+\end{bem}
+\end{stz}
+

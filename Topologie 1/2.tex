@@ -1,0 +1,50 @@
+\section{Topologie}
+
+Notation: X eine Menge, $\mathcal{P}(X)$ die Potenzmenge von X.
+
+\begin{dfn}
+    Eine \emph{Topologie} $\tau$ auf einer Menge X ist eine Teilmenge
+    $\tau\subset\mathcal{P}(X)$ mit
+    \begin{enumerate}
+        \item $\emptyset, X \in \tau$
+        \item Ist $I\subset \tau$, dann $\bigcup_{U\in I} U \in\tau$
+        \item $\mdef{U_1, \ldots, U_n} \subset \tau$, dann
+            $\bigcup_{i=1}^n U_i \in \tau$
+    \end{enumerate}
+    Das Paar $(X, \tau)$ ist dann ein \emph{topologischer Raum}, $U\in\tau$ heißt
+    eine \emph{offene Teilmenge von $X$}.
+\end{dfn}
+
+\begin{dfn}
+    Sei $X$ eine Menge, $\tau_1$ und $\tau_2$ Topologien auf $X$.
+    \begin{itemize}
+        \item $\tau_1$ heißt \emph{feiner} als $\tau_2$, falls $\tau_2\subset\tau_1$
+        \item $\tau_1$ heißt \emph{strikt feiner} als $\tau_2$, falls
+            $\tau_2\subsetneq\tau_1$
+        \item $\tau_1$ und $\tau_2$ heißen \emph{vergleichbar}, falls
+            $\tau_1\subset\tau_2$ oder $\tau_2\subset\tau_1$
+    \end{itemize}
+\end{dfn}
+
+\newtheorem{bsps}[dfn]{Beispiele}
+\begin{bsps}
+    \begin{enumerate}
+        \item $(X,d)$ metrischer Raum und sei $\tau_d$ die Menge der offenen
+            Teilmengen von $X$. Dann ist $\tau_d$ die \emph{metrische Topologie}
+            auf $(X,d)$.
+        \item $\mathcal{P}(X)$ ist eine Topologie auf $X$ (diskrete Topologie). Es 
+            ist die feinste aller Topologien.
+        \item $\tau = \mdef{\emptyset, X}$ definiert eine Topologie auf X. Sie
+            heißt die \emph{grobe Topologie}.
+        \item $X=\mdef{1,2,3}$. Dann sind $\tau_1=\mdef{\emptyset,X,\mdef{1}}$ und
+            $\tau_2=\mdef{\emptyset, X, \mdef{2}, \mdef{2,3}}$ Topologien auf $X$,
+            die nicht vergleichbar sind. Dagegen ist
+            $\mdef{\emptyset, X, \mdef{1}, \mdef{2}, \mdef{2,3}}$ keine Topologie.
+        \item Sei $X$ eine Menge und
+            $\tau = \mdef{\emptyset}\cup\mdef[U\subset X]{X\setminus U \ \text{ist endlich}}$.
+            Das definiert eine Topologie auf $X$, die \emph{Endliche-Komplemente-Topologie}
+    \end{enumerate}
+\end{bsps}
+
+Im Fall von metrischen Räumen hat man die Topologie mit Hilfe der offenen Kugeln
+definiert, ähnlich:
