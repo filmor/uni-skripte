@@ -1,9 +1,14 @@
-\documentclass[a4paper]{scrartcl}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{skript}[2008/10/23 v0.0]
 
-\usepackage{amsmath, amsthm, amssymb}
-\usepackage[ngerman]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{ifthen}
+\LoadClass[a4paper]{scrartcl}
+
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage[ngerman]{babel}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{ifthen}
 
 \swapnumbers
 \theoremstyle{definition}
@@ -37,13 +42,9 @@
     \ifthenelse{\equal{ #1 }{\empty}}{}{\ensuremath{_{#1}}}
 }
 
+\newcommand{\potmenge}[1]{\mathcal{P}(#1)}
+
 \newcommand{\supnorm}[1]{\norm[\infty]{#1}}
 
 \newcommand{\Equiv}{\ensuremath{\Leftrightarrow}}
 
-\begin{document}
-
-\input{1.tex}
-\input{2.tex}
-
-\end{document}
