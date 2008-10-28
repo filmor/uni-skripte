@@ -47,4 +47,39 @@ Notation: X eine Menge, $\mathcal{P}(X)$ die Potenzmenge von X.
 \end{bsps}
 
 Im Fall von metrischen Räumen hat man die Topologie mit Hilfe der offenen Kugeln
-definiert, ähnlich:
+definiert, ähnlich\begin{dfn}
+    Sei $X$ eine Menge. Eine \emph{Basis} $B$ einer Topologie auf $X$ ist eine
+    Teilmenge $B\subset\potmenge{X}$ mit
+    \begin{itemize}
+        \item $\forall x\in X\ \exists U\in B$ mit $x\in U$
+        \item Falls $U_1,U_2\in B$ und $x\in U_1 \cap U_2$, dann existiert ein
+            $U_3 \in B$ mit $x\in U_3 \subset U_1\cap U_2$
+    \end{itemize}
+\end{dfn}
+
+\begin{stz}
+    Sei $X$ eine Menge, $B\subset\potmenge{X}$ eine Basis. Sei
+    $\tau\subset\potmenge{X}$ mit $U\in\tau$ genau dann, wenn es für jedes $x\in U$
+    ein $V\in B$ gibt, mit $x\in V\subset U$. Dann ist $\tau$ eine Topologie auf $X$.
+    Sie heißt die \emph{von $B$ erzeugte Topologie}.
+
+    \begin{proof}[Beweis]
+        \begin{itemize}
+            \item $\emptyset\in\tau$ klar.
+            \item $X\in\tau$ klar (2.4).
+            \item bla
+        \end{itemize}
+    \end{proof}
+
+\end{stz}
+
+\begin{lem}
+    Sei $X$ eine Menge, $B\subset\potmenge{X}$ eine Basis und $\tau$ die von $B$
+    erzeugte Topologie. Dann gilt: \[\tau = \mdef[\cup_{U\in I}U]{I\subset B}\]
+
+    \begin{proof}[Beweis]
+        Analog zu Lemma 1.35 (ref).
+    \end{proof}
+\end{lem}
+
+
