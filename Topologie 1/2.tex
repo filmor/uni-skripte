@@ -32,7 +32,7 @@ Notation: X eine Menge, $\mathcal{P}(X)$ die Potenzmenge von X.
         \item $(X,d)$ metrischer Raum und sei $\tau_d$ die Menge der offenen
             Teilmengen von $X$. Dann ist $\tau_d$ die \emph{metrische Topologie}
             auf $(X,d)$.
-        \item $\mathcal{P}(X)$ ist eine Topologie auf $X$ (diskrete Topologie). Es 
+        \item $\mathcal{P}(X)$ ist eine Topologie auf $X$ (diskrete Topologie). Es
             ist die feinste aller Topologien.
         \item $\tau = \mdef{\emptyset, X}$ definiert eine Topologie auf X. Sie
             heißt die \emph{grobe Topologie}.
@@ -82,4 +82,61 @@ definiert, ähnlich\begin{dfn}
     \end{proof}
 \end{lem}
 
+\begin{lem}
+    Sei $(X, \tau)$ ein topologischer Raum. Sei $B\subset \tau$ mit der Eigenschaft:
+    F"ur jedes $U\in \tau$ und jedes $x\in U$ existiert $V\in B$ mit $x\in V\subset U$.
+    Dann ist $B$ eine Basis, die $\tau$ erzeugt.
 
+    \begin{proof}
+        \begin{enumerate}
+            \item $X$ ist offen, also $\forall x\in X \exists V\in B$ mit $x\in V$.
+                Damit gilt 2.4(1) (ref).
+            \item Sei $x\in V_1\cap V_2$ mit $V_1, V_2 \in B \Rightarrow V_1, V_2 \in \tau$.
+                also $x\in V_1\cap V_2$ offen, also $\exists V_3$ mit
+                $x\in V_3\subset V_1\cap V_2$ (2.4(2) ref).
+            \item Sei $\tau'$ die Topologie, die von $B$ erzeugt wird. Wir m"ochten zeigen:
+                $\tau' = \tau$.\\
+                Sei $U\in\tau'$, dann ist $U$ Vereinigung von Elementen in $B$
+                (Lemma 2.6 ref),
+                aber alle solche sind offen in $\tau$, also gilt $U\in\tau$.\\
+                Umgekehrt: Sei $U\in\tau$, $x\in U$, dann existiert $V\in B$ mit
+                $x\in V\subset U$, also ist $U$ offen bez"uglich $\tau'$.
+        \end{enumerate}
+    \end{proof}
+\end{lem}
+
+\begin{lem}
+    Seien $B_1$, $B_2$ Basen von Topologien $\tau_1$, $\tau_2$ auf $X$. Dann ist $\tau_1$
+    genau dann feiner als $\tau_2$, wenn f"ur jedes $U\in B_2$ mit $x\in U$ ein $V\in B_1$
+    existiert mit $x\in V\subset U$.
+    \begin{proof}
+    \subsubsection*{Hinrichtung}
+        Sei $x\in X$, $U\in B_2$ mit $x\in U$, da $\tau_2 \subset \tau_1$ ist $U$ offen in
+        $\tau_2$ (?!). Damit existiert per Definition (von was?) ein $V\in B_1$ mit
+        $x\in V\subset U$.
+    \subsubsection*{R"uckrichtung}
+        Sei $W\in\tau_2$ und sei $x\in W$. Dann existieren $V\in B_2$ und $x\in V\subset W$.
+        Damit existiert nach Annahme ein $U\in B_1$ mit $x\in U\subset V$. Also
+        $X\in W \subset U$ und $W\in \tau_1$.
+    \end{proof}
+    \begin{bsp}
+        $(X,d)$ metrischer Raum. Dann ist $\mdef[B_\eps(x)]{x\in X,\ \eps > 0}$ eine Basis
+        f"ur die metrische Topologie.
+    \end{bsp}
+    \begin{bsp}
+        $X = \R$ und $B_l = \mdef[[a,b)]{a,b\in \R,\ a < b}$. Dann ist $B_l$ eine Basis, die
+        entsprechende Topologie hei\ss{}t die $blabla$ Topologie $\tau_l$.
+        \begin{bem}
+            $T_l$ ist strikt feiner als die euklidische Topologie.
+        \end{bem}
+    \end{bsp}
+\end{lem}
+
+\begin{dfn}
+    Eine Teilmenge $S\subset \potmenge{X}$ ist eine \emph{Subbasis} einer Topologie auf $X$,
+    falls
+        \[ \forall x\in X \exists U\in S \ \text{mit}\ x\in U \].
+
+    \begin{stz}
+    \end{stz}
+\end{dfn}
