@@ -136,7 +136,112 @@ definiert, ähnlich\begin{dfn}
     Eine Teilmenge $S\subset \potmenge{X}$ ist eine \emph{Subbasis} einer Topologie auf $X$,
     falls
         \[ \forall x\in X \exists U\in S \ \text{mit}\ x\in U \].
-
     \begin{stz}
+        Die Teilmenge $B \subset \potmenge{X}$, $B := \mdef[U_1 \cap \ldots \cap U_n]{n\in \N,\ U_i \in S}$
+        ist eine Basis. Die erzeugte Topologie hei\ss{}t von der Subbasis $S$ erzeugt.
+        \begin{proof}
+         Klar
+        \end{proof}
     \end{stz}
+    \begin{bsp}[$\R^n$ mit der euklidischen Topologie]
+        Sei f"ur $i\in \underbar{n} = {1, \ldots, n}$ und $\alpha\in\R$
+        \[S^+(i, \alpha)=\mdef[x\in\R^n]{x_i>\alpha}\]
+        \[S^-(i, \alpha)=\mdef[x\in\R^n]{x_i<\alpha}\]
+        Dann ist $S=\mdef[S^+(i,\alpha)]{i\in\underbar n,\ \alpha\in\R}
+                    \cup \mdef[S^-(i,\alpha)]{i\in\underbar n,\ \alpha\in\R}$
+        eine Subbasis der euklidischen Topologie.
+    \end{bsp}
+    \begin{bsp}[Punktweise Konvergenz]
+        Sei $(X,\tau)$ ein topologischer Raum und $\Omega$ eine Menge. Man
+        definiert eine Topologie auf $X^\Omega = \mdef{f:\Omega\to X}$ durch die
+        Angabe einer Subbasis:
+        \[S=\mdef[s(\omega, U)]{\omega\in\Omega,\ U\in\tau} \text{ mit }
+          s(\omega, U)=\mdef[f:\Omega\to X]{f(\omega)\in U}\]
+        Es gilt $s(\omega, X)=X^\Omega$ also ist $S$ eine Subbasis, zum Beispiel
+        f"ur $X^\Omega = \R^\R$. Die so definierte Topologie hei\ss{}t die
+        \emph{Topologie der punktweisen Konvergenz}.
+    \end{bsp}
 \end{dfn}
+
+\begin{dfn}
+    Ein topologischer Raum hei\ss{}t \emph{metrisierbar}, wenn es auf $X$ eine
+    Metrik $d$ gibt, mit $\tau=\tau_d$.
+    \begin{bsp}
+        \begin{enumerate}
+         \item Die diskrete Topologie ist metrisierbar durch die diskrete Metrik
+         \item Hat $X$ mehr als ein Element, so ist die grobe Topologie nicht
+            metrisierbar.
+         \item $\tau_l$ auf $\R$ und punktweise Konvergenz auf $\R^{(\R^n)}$ ist
+            nicht metrisierbar.
+        \end{enumerate}
+    \end{bsp}
+\end{dfn}
+
+\begin{dfn}
+    Seien $(X,\tau)$ und $(Y, \tau')$ topologische R"aume. Auf dem Produkt
+    $X\times Y$ definiert man die \emph{Produkttopologie} mit Hilfe einer
+    Subbasis
+    \[S = \mdef[U\times V]{U\in\tau} \cup \mdef[X\times V]{V\in\tau'}\]
+    mit entsprechender Basis
+    \[B = \mdef[U\times V \subset X\times Y]{U\in\tau,\ V\in\tau'}\]
+
+    \begin{bem}
+        \begin{enumerate}
+         \item $B$ selbst ist keine Topologie auf $X\times Y$, z.B. $(0,\ 1)^2
+            \cup (1,\ 2)^2 \subset \R^2$.
+         \item Seien $B_1, B_2$ (bzw. $S_1, S_2$) Basen (bzw. Subbasen) f"ur
+            $\tau,\tau'$, dann ist
+            \[B = \mdef[U\times V]{U\in B_1,\ V\in B_2}\]
+            eine Basis (bzw. entsprechend mit $S_{1,2}$ Subbasis) von $X\times Y$.
+        \end{enumerate}
+    \end{bem}
+\end{dfn}
+
+\begin{dfn}
+    Sei $(X,\tau)$ ein topologischer Raum, $X\subset Y$ eine Teilmenge, dann ist
+    $\tau_Y = \mdef[U\cap Y]{U\in\tau}$ eine Topologie auf $Y$, die
+    \emph{Teilraumtopologie}.
+
+    \begin{bem}
+        \begin{enumerate}
+         \item Analog zu (bla, ref 2.17) f"ur Basis und Subbasis
+         \item Sei $(Y,\tau_y) \subset (X,\tau)$ Teilraum. Dann ist die Aussage
+            "`$U\subset X$ ist offen"' nicht ganz klar, meist bzgl. $X$. Aber
+            im Allgemeinen ist $U\in\tau$ und $U\in\tau_Y$ nicht "aquivalent.
+            (Beispiel)
+         \item Ist $(X,d)$ metrisch, $Y\subset X$ mit induzierter Metrik $d_Y$,
+            dann ist $\tau_{d_Y}$ die Unterraumtopologie.
+        \end{enumerate}
+    \end{bem}
+\end{dfn}
+
+\begin{bsp}
+    $l^2$ bla.
+\end{bsp}
+
+\begin{dfn}
+    Sei $(X. \tau)$ topologischer Raum. $A\subset X$ hei\ss{}t abgeschlossen,
+    falls $(A\setminus)\in\tau$.
+\end{dfn}
+
+\begin{bsp}
+    Abgeschlossene Kugel.
+\end{bsp}
+
+\begin{stz}[Dualsatz]
+    Sei $(X,\tau)$ topologischer Raum.
+    \begin{itemize}
+     \item $X, \emptyset$ sind abgeschlossen
+     \item $\mdef{A_\alpha}_{\alpha\in I}$ mit $A_\alpha$ abgeschlossen, dann ist
+        $\bigcap_{\alpha\in I} A_\alpha$ abgeschlossen
+     \item $A_1,\ldots, A_n$ abgeschlossen, dann ist auch $\bigcup_{i=1}^n A_i$
+        abgeschlossen.
+    \end{itemize}
+    \begin{proof}
+        De Morgan.
+    \end{proof}
+    \begin{bem}
+        Man k"onnte topologische R"aume auch mit $\mdef[A\subset X]{A\text{ abgeschlossen}}$
+        mit den Punkten des Satzes als Axiomen definieren.
+    \end{bem}
+\end{stz}

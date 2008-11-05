@@ -34,8 +34,8 @@
 
 \newcommand{\mdef}[2][\empty]{
     \ifthenelse{\equal{#1}{\empty}}
-        {\ensuremath{\{#2\}}}
-        {\ensuremath{\{#1\ |\ #2\}}}
+        {\ensuremath{\left\lbrace #2\right\rbrace}}
+        {\ensuremath{\left\lbrace #1\ |\ #2\right\rbrace}}
 }
 
 \newcommand{\norm}[2][\empty]{
