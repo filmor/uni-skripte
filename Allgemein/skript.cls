@@ -30,6 +30,7 @@
 \newcommand{\N}{\menge{N}}
 
 \renewcommand{\epsilon}{\varepsilon}
+\newcommand{\eps}{\epsilon}
 
 \newcommand{\mdef}[2][\empty]{
     \ifthenelse{\equal{#1}{\empty}}
