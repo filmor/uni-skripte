@@ -26,7 +26,6 @@ Notation: X eine Menge, $\mathcal{P}(X)$ die Potenzmenge von X.
     \end{itemize}
 \end{dfn}
 
-\newtheorem{bsps}[dfn]{Beispiele}
 \begin{bsps}
     \begin{enumerate}
         \item $(X,d)$ metrischer Raum und sei $\tau_d$ die Menge der offenen
@@ -245,3 +244,260 @@ definiert, ähnlich\begin{dfn}
         mit den Punkten des Satzes als Axiomen definieren.
     \end{bem}
 \end{stz}
+
+\begin{lem}
+   \begin{enumerate}
+    \item Sei $(X,\tau)$ topologischer Raum, $(Y,\tau_Y)$ Teilraum, dann ist
+        $A\subset Y$ abgeschlossen bezüglich $\tau_Y$, wenn es $C\subset X$
+        abgeschlossen gibt mit $A=C\cup Y$.
+    \item Ist $Y$ abgeschlossen in $X$, so ist $A\subset Y$ genau dann abgeschlossen
+        in $Y$, wenn $A$ in $X$ abgeschlossen ist.
+   \end{enumerate}
+\end{lem}
+
+\begin{dfn}
+    Sei $(X,\tau)$ topologischer Raum, $A\subset X$
+    \begin{itemize}
+        \item Der Abschluss von $A$ in $X$ ist die Teilung
+            \[\overline{A} = \bigcap\mdef[B\subset X]{B \text{ abgeschlossen und }
+              A\subset B}\]
+        \item Dass Innere von $A$ in $X$ ist die Teilung
+            \[A^o = \bigcup\mdef[O\subset X]{O\text{ offen, } O\subset A}\]
+    \end{itemize}
+    \begin{bem}
+        \begin{itemize}
+            \item $\overline{A}$ abgeschlossen, $A$ abgeschlossen $\Equiv
+                \overline{A} = A$
+            \item $A^o$ offen, $A$ offen $\Equiv A^o = A$
+        \end{itemize}
+    \end{bem}
+\end{dfn}
+
+\begin{stz}
+    Sei $(X,\tau)$ ein topologischer Raum, $(Y,\tau_Y)$ ein Teilraum und $A\subset Y$
+    eine Teilmenge. Dann gilt:
+    \begin{enumerate}
+        \item $\overline{A}^Y = \overline{A}^X \cap Y$
+        \item $A^{o^X} \cap Y \subset A^{o^Y}$ und $\supset$ genau dann, wenn $Y$ offen.
+    \end{enumerate}
+    \begin{proof}
+        Klar.
+    \end{proof}
+\end{stz}
+
+\begin{stz}
+    Den Abschluss $A\subset(X,\tau)$ kann man wie folgt charakterisieren:
+    \[x\in \overline{A} \Equiv \forall U\in \tau\text{ (oder einer Basis von $\tau$)
+      mit } x\in U \text{ gilt } U\cap A \neq \emptyset\]
+\begin{proof}
+    \begin{align*}
+        & x\in\overline{A} \Equiv x\notin
+            \bigcap \mdef[B\subset X]{B \text{ abgeschlossen, } A\subset B} \\
+        \Equiv & \exists B \text{ abgeschlossen, } A\subset B,\ x\in B \\
+        \Equiv & \exists U \text{ offen (}U = X\setminus B\text{) mit } x\in U
+            \text{ und } U\cap A = \emptyset
+    \end{align*}
+\end{proof}
+\end{stz}
+
+\begin{dfn}
+    Sei $(X,\tau)$ topologischer Raum. $V\subset X$ ist eine Umgebung von $x\in X$,
+    falls $x\in V^o$ (muss nicht offen sein).
+
+    \begin{bsp}
+        \begin{enumerate}
+            \item $(V,\norm{\cdot})$ normierter Raum, dann gilt:
+                \[\overline{B}_\eps(x) \text{ ist Umgebung von } x\]
+            \item $\Q\in \R$ eukl., dann gilt: $\overline{\Q}=\R$
+            \item $X$ mit der groben Topologie, $A\subset X$
+                \[\Rightarrow A^o = \emptyset,\ \overline{A} = X\]
+            \item $A=\mdef[\frac{1}{n}]{n = 1, \ldots}\subset\R$ eukl., dann gilt
+                $\overline{A} = \mdef{0} \cup A$
+        \end{enumerate}
+    \end{bsp}
+\end{dfn}
+
+\begin{dfn}
+    $(X,\tau)$ topologischer Raum, $A\subset X$. $x$ ist ein \emph{Berührungspunkt}
+    von $A$, falls für jede offene Umgebung $V$ von $x$ gilt:
+    \[V\setminus \mdef{x}\cap A\neq \emptyset\]
+    \begin{bsp}
+        \begin{enumerate}
+            \item $\overline{B_\eps(x)}$ ist die Menge der Berührungspunkte von
+                $B_\eps(x)$ im normierten Fall
+            \item Jedes $x\in\R$ ist Berührpunkt von $\Q$
+            \item $X$ grob, dann ist jeder Punkt $x\in X$ ein Berührpunkt von
+                $\mdef{y}\subset X,\ x\neq y$
+            \item $0$ ist der einzige Berührungspunkt von
+                $A=\mdef[\frac{1}{n}]{n=1,\ldots}$
+        \end{enumerate}
+    \end{bsp}
+\end{dfn}
+
+\begin{stz}
+    $(X,\tau)$ topologischer Raum, $A\subset X$. Sei $A' = \mdef[x\in X]
+    {x\text{ berührt } A}$. Dann gilt $\overline{A} = A\cup A'$.
+
+    \begin{krl}
+        $A\subset (X,\tau)$ ist genau dann abgeschlossen, wenn es alle seine
+        Berührungspunkte enthält.
+    \end{krl}
+\end{stz}
+
+\begin{dfn}
+    $(X,\tau)$, $(Y,\tau')$ topologische Räume, $f:X\to Y$ eine Abbildung.
+    \begin{itemize}
+        \item $f$ ist stetig am Punkt $x\in X$ wenn für jede Umgebung von $V$ von
+            $f(x)$ eine Umgebung $W$ von $x$ existiert mit $f(W)\subset V$
+        \item $f$ ist stetig, falls $f^{-1}(U)$ offen für alle $U\subset Y$ offen.
+    \end{itemize}
+    \begin{bem}
+        Im metrischen Fall sind beide Punkte für alle $x\in X$ äquivalent.
+    \end{bem}
+
+    \begin{bsps}
+        \begin{enumerate}
+            \item $(X,\tau)\overset{id}{\to}(X,\tau')$ ist genau dann stetig, wenn
+                $\tau$ feiner als $\tau'$ ist
+            \item[bla] Hat $X$ die grobe Topologie, dann ist jede Abbildung
+                $(Y,\tau')\to(X,\tau)$ stetig
+            \item Die Inklusion $(Y,\tau_Y)\hookrightarrow (X,\tau)$ von Teilräumen
+                ist stetig
+            \item Konstante Abbildungen $X\overset{f}\to Y,\ f(x) = y \forall x\in X$
+                sind stetig
+            \item Sind $f:X\to Y$ und $g: Y\to Z$ stetig, dann ist auch $g\circ f$
+                stetig
+            \item Aus 3. und 5. folgt: $(X,\tau_X)\subset(X,\tau)$ und $f:Y\to Z$
+                stetig, dann ist $f\Vert_X$ stetig
+            \item $Y$ Teilraum von Z, ist $f:X\to Y$ stetig, so ist $f:X\to Z$ stetig
+            \item $X\overset{f}\to Z$ stetig mit $f(X)\subset Y\subset Z$, so ist
+                $h:X\to Y$ mit $h(x) = f(x)\ \forall x\in X$ auch stetig
+            \item Gilt $X = \bigcup_{\alpha\in I}U_\alpha$ mit $U_\alpha\subset X$
+                offen, dann ist $f:X\to Y$ offen, genau dann stetig, wenn
+                $f\Vert_{U_\alpha}$ stetig $\forall\alpha\in I$ ist (\emph{offenes
+                Klebelemma})
+        \end{enumerate}
+    \end{bsps}
+\end{dfn}
+
+\begin{stz}
+    Für $f:(X,\tau)\to(Y,\tau')$ sind äquivalent:
+    \begin{itemize}
+        \item $f$ ist stetig
+        \item für alle $A\subset X$ gilt $f(\overline{A}) = \overline{f(A)}$
+        \item für alle $B\subset Y$ abgeschlossen ist $f^{-1}(B)$ abgeschlossen
+    \end{itemize}
+\end{stz}
+
+\begin{lem}[abgeschlossenes Klebelemma]
+    Sei $(X,\tau)$ ein topologischer Raum, $n\in\N$, $A_1,\ldots,A_n$ abgeschlossene
+    Teilräume von $X$ mit $X=\bigcup_{i=1}^n A_i$. Sei $f:A_i\to(Y,\tau)$ stetig
+    für $i = 1, \ldots, n$ so dass $f_i\Vert_{A_i\cap A_j}=f_j\Vert_{A_i\cap A_j}$
+    für alle $1\leq i, j \leq n$. Dann ist die Abbildung $f : X \to Y$, $f(x) = f_i(x)$
+    für $x\in A$ stetig.
+    \begin{proof}
+        $B\subset Y$ abgeschlossen. Es gilt: $f^{-1}(B) = \bigcup_{i=1}^n f^{-1}_i(B)$
+        abgeschlossen.
+    \end{proof}
+    \begin{bem}
+        Das Lemma gilt nicht allgemein für $\mdef{A_i}_{i\in I}$ mit $I$ unendlich,
+        z.B. $f:\R\to\R$, $f(0) = 0$, $f(x) = \frac{1}{x}$ für $x\neq 0$.
+        $A_0 = \mdef{0}$, $A_n = (-\infty,-\frac 1n]\cup[\frac 1n, \infty)$
+        abgeschlossen, $\R=\bigcup_{i=0}^\infty A_i$, $f\Vert_{A_i}$ stetig.
+    \end{bem}
+\end{lem}
+
+\begin{dfn}
+    $(X,\tau)\in Top$, $\mdef{x_n}_{n\in\N}\subset X$ eine Folge in $X$ und $x\in X$.
+    Man sagt $x$ ist ein \emph{Limes} von $\mdef{x_n}_{n\in\N}$, falls für jede
+    Umgebung $V$ von $x$ ein $N\in\N$ existiert mit $n\geq N\Rightarrow x_n\in V$.
+\end{dfn}
+
+\begin{lem}
+    $(X,\tau)$ ein topologischer Raum, $\mdef{x_n}_{n\in\N}\subset X$ und
+    $x\in\lim_{n\to\infty}x_n$
+    \begin{enumerate}
+        \item Ist $f:X\to Y$ stetig, so gilt $f(x)\in \lim f(x_n)$
+        \item Ist $A\subset X$ eine Teilmenge und $\mdef{x_n}_n \subset A$, dann gilt
+            $x\in\overline{A}$
+    \end{enumerate}
+    \begin{proof}
+        \begin{enumerate}
+            \item Ist $V$ eine Umgebung von $f(x)$, dann existiert eine Umgebung
+                $U$ von $x$ mit $f(U)\subset V$. $\exists N$ mit $x_n\in U\ \forall
+                n > N$, also $f(x_n)\in f(U)\subset V$
+            \item genauso
+        \end{enumerate}
+    \end{proof}
+    \begin{bem}
+        $(X,\tau)$ topologischer Raum, $\mdef{x_n}_n\subset X$
+        \begin{itemize}
+            \item $\mdef{x_n}_n$ kann verschiedene Limites haben. Ist zum Beispiel
+                $\tau$ die grobe Topologie. Dann sind alle Punkte von $X$ ein $Limes$
+                von $\mdef{x_n}$
+            \item Die Umkehrungen des Lemmas gelten nicht.\\
+                Ist $f(x) \in \lim f(x_n)$ für alle Folgen $x_n$ mit $x\in\lim x_n$,
+                dann sagt man $f$ ist \emph{folgenstetig} in $x$ $\nRightarrow$
+                stetig in $x$.\\
+                Ebenso gilt $x\in\overline{A}$, so ist $x$ nicht notwendigerweise ein
+                Limes einer Folge in $A\subset X$
+        \end{itemize}
+    \end{bem}
+\end{lem}
+
+\begin{stz}
+    Seien $(X,\tau)$ und $(Y,\tau')$ topologische Räume, $B'$ (bzw. $S'$) eine Basis
+    (bzw. Subbasis) von $\tau'$. Sei $f:(X,\tau)\to(Y,\tau')$ eine Abbildung.
+    Dann sind äquivalent:
+    \begin{itemize}
+        \item $f$ stetig
+        \item $f^{-1}(U)$ offen $\forall U\in B'$
+        \item $f^{-1}(V)$ offen $\forall V\in S'$
+    \end{itemize}
+    \begin{proof}
+        Klar (bla ref)
+    \end{proof}
+\end{stz}
+
+\begin{dfn}
+    $f:(X,\tau)\to(Y,\tau')$ heißt \emph{Homöomorphismus} (oder eine
+    \emph{topologische Äquivalenz}), falls
+    \begin{itemize}
+        \item $f$ bijektiv
+        \item sowohl $f$ als auch $f^{-1}$ stetig
+    \end{itemize}
+\end{dfn}
+
+\begin{dfn}
+    $f:(X,\tau)\to(Y,\tau')$ heißt
+    \begin{itemize}
+        \item \emph{offen}, falls $f(U)\in \tau'\ \forall U\in\tau$
+        \item \emph{abgeschlossen}, falls $f(A)$ abgeschlossen für $A\subset X$
+            abgeschlossen
+    \end{itemize}
+\end{dfn}
+
+\begin{lem}
+    Sei $f:(X,\tau)\to(Y,\tau')$. Dann sind äquivalent:
+    \begin{enumerate}
+        \item $f$ ist ein Homöomorphismus
+        \item $f$ ist bijektiv, stetig und offen
+        \item $f$ ist bijektiv, stetig und abgeschlossen
+    \end{enumerate}
+    \begin{bem}
+        Eine stetige offene Abbildung muss nicht abgeschlossen sein, umgekehrt auch
+        nicht.
+    \end{bem}
+    \begin{bsps}
+        \begin{enumerate}
+            \item Inverse und Verknüpfungen von Homöomorphismen sind wieder
+                Homöomorphismen
+            \item $a < b\in\R$, dann sind $(a,b)\subset\R$ und $\R$ homöomorph
+                (eukl.):
+                \begin{align}
+                    f:(-1,1)\to\R,\ &f(x) = \frac{x}{1-\norm{x}} \\
+                    g:(0,1)\to(a,b),\ &g(x) = (b-a)x + a
+                \end{align}
+        \end{enumerate}
+    \end{bsps}
+\end{lem}

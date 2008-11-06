@@ -14,6 +14,7 @@
 \theoremstyle{definition}
 \newtheorem{dfn}{Definition}[section]
 \newtheorem{bsp}[dfn]{Beispiel}
+\newtheorem{bsps}[dfn]{Beispiele}
 
 \theoremstyle{plain}
 \newtheorem{stz}[dfn]{Satz}
@@ -28,6 +29,7 @@
 \newcommand{\R}{\menge{R}}
 \newcommand{\C}{\menge{C}}
 \newcommand{\N}{\menge{N}}
+\newcommand{\Q}{\menge{Q}}
 
 \renewcommand{\epsilon}{\varepsilon}
 \newcommand{\eps}{\epsilon}
