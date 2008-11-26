@@ -38,5 +38,161 @@
 \end{lem}
 
 \begin{lem}
-    Ist $f:X\to Y$ eine Abbildung, so definiert 
-\end{lem}<++>
+    Ist $f:X\to Y$ eine Abbildung, so definiert
+    \begin{equation}
+     x \sim_f y :\Equiv f(x) = f(z)
+    \end{equation}
+    eine "Aquivalenzrelation auf $X$.
+    \begin{proof}
+     (3.4b), Urbilder bilden Partition.
+    \end{proof}
+\end{lem}
+
+\begin{lem}
+ Sei $f:X \to Y$ eine Abbildung und $R$ eine "Aquivalenzrelation auf $X$ so dass
+ $f(x) = f(y)$ f"ur alle $x$, $y$ mit $x \sim y$. Dann existiert eine
+ \emph{einzige} Abbildung $\overline{f}: X/R \to Y$, so dass das Diagramm
+ kommutiert:
+
+ \[
+ \begin{diagram}
+    \node{X} \arrow{e,t}{f} \arrow{s,l}{\pi}
+        \node{Y}\\
+    \node{X/R} \arrow{ne,r}{\overline{f}}
+ \end{diagram}
+ \]
+
+ Ist $f$ surjektiv und $R$ von $f$ wie in 3.5, so ist $\overline{f}$ bijektiv.
+ \begin{proof}
+  W"ahle $\overline{f}([x]) := f(x)$.
+ \end{proof}
+\end{lem}
+
+\begin{lem}
+ $f: X \to Y$ eine Abbildung. $\mdef{A_\alpha}_{\alpha\in I} \subset \potmenge{X}$,
+ $\mdef{B_\beta}_{\beta\in J} \subset \potmenge{X}$, $D\subset Y$. Dann gilt:
+ \begin{itemize}
+  \item $f\left(\bigcup_\alpha A_\alpha\right) = \bigcup_\alpha f(A_\alpha)$
+  \item $f\left(\bigcap_\alpha A_\alpha\right) \subset \bigcap_\alpha f(A_\alpha)$
+  \item $f^{-1}\left(\bigcup_\beta B_\beta\right) = \bigcup_\beta f^{-1}(B_\beta)$
+  \item $f^{-1}\left(\bigcap_\beta B_\beta\right) = \bigcap_\beta f^{-1}(B_\beta)$
+  \item $f^{-1}(Y \setminus D) = X \ f^{-1}(D)$
+  \item $f(f^{-1}(D)) = f(X) \cap D$
+ \end{itemize}
+ \begin{proof}
+  Doof.
+ \end{proof}
+\end{lem}
+
+\begin{dfn}
+ $(X,\tau)$, $(Y, \tau')$ topologische R"aume, $f: X\to Y$ eine Abbildung. $f$
+ hei"st \emph{Quotientenabbildung}, falls
+ \begin{itemize}
+  \item $f$ surjektiv
+  \item f"ur $U \subset Y$ gilt: $U\ \text{offen} \Equiv f^{-1}(U)\ \text{offen}$
+ \end{itemize}
+
+ \begin{bem}
+  \begin{itemize}
+   \item Eine Quotientenabbildung ist stetig.
+   \item Eine stetige surjektive Abbildung ist im Allgemeinen \emph{kein}
+        Quotient. ($(X, \tau_1) \overset{id} \to (X,\tau_2)$ mit $\tau_2$ strikt
+        feiner als $\tau_2$)
+  \end{itemize}
+ \end{bem}
+
+ \begin{bsps}
+  \begin{itemize}
+   \item Ist $f:(X,\tau)\to (Y,\tau')$ stetig, surjektiv und offen oder abgeschlossen,
+        dann ist $f$ ein Quotient
+   \item Sei $X=[0,1]\cup [2,3] \subset \R$, $Y=[0,2]\subset \R$ mit der euklidischen
+        Topologie. Dann ist $f(x)=x\chi_{[0,1]} + (x-1)\chi_{[2,3]}$ stetig,
+        surjektiv und abgeschlossen, also ein Quotient
+   \item Seien $X$, $Y$ topologische R"aume, dann ist $X\times Y \overset[p_X]{\to} X$
+        ein Quotient
+  \end{itemize}
+ \end{bsps}
+\end{dfn}
+
+\begin{dfn}
+  $(X,\tau)$ topologischer Raum, $Y$ eine Menge und $f:X\to Y$ eine surjektive
+  Abbildung. Dann existiert genau eine Topologie $\tau_f$ auf $Y$, so dass $f$
+  eine Quotientenabbildung ist. Sie ist durch $\tau_f = \mdef[U\subset Y]{f^{-1}(U)\in \tau}$
+  definiert.
+  \begin{proof}[Existenz]
+   Lemma 37 (c) und (d)
+  \end{proof}
+\end{dfn}
+
+\begin{lem}
+ $(X, \tau)$, $(Y, \tau')$ topologische R"aume, $f:X\to Y$ surjektiv und $g:Y\to Z$
+ eine Abbildung. Dann sind "aquivalent:
+ \begin{enumerate}
+  \item $g:(Y,\tau_f)\to (Z, \tau')$ ist stetig
+  \item $g\circ f : (X, \tau) \to (Z,\tau')$ ist stetig
+ \end{enumerate}
+
+ \begin{proof}
+  Sei $U\subset Z$. Dann gilt:
+  \begin{align}
+  (g\circ f)^{-1}(U)=f^{-1}(g^{-1}(U) \ \mathrm{und} \\
+  g^{-1}(U)\ \mathrm{ist offen}\ \Equiv\ f^{-1}g^{-1} \ \mathrm{ist offen}
+  \end{align}
+ \end{proof}
+\end{lem}
+
+\begin{dfn}
+ Sei $R$ eine "Aquivalenzrelation und $\tau$ eine Topologie auf $X$, $\pi$ die
+ Projektion $X\to X/R$. Die Topologie $\tau_\pi$ auf $X/R$ hei"st
+ \emph{Quotiententopologie}. $\pi$ hei"st \emph{kanonische Projektion}.
+\end{dfn}
+
+\begin{stz}[Universelle Eigenschaft]
+ Ist $f:X\to Y$ eine stetige Abbildung, $R$ "Aquivalenzrelation auf $X$. Falls
+ $x\sim y \Rightarrow f(x) = f(y)$, so gibt es genau eine Abbildung $\overline{f}$,
+ so dass
+ \[
+  \begin{diagram}
+   \node{X} \arrow{e,t}{f} \arrow{s,l}{\pi} \node{Y} \\
+   \node{X/R} \arrow{ne, r}{\overline{f}}
+  \end{diagram}
+ \]
+ kommutiert.
+
+ \begin{bem}
+  \[
+   \begin{diagram}
+    \node{X} \arrow{e,A,t}{f \mathrm{ surj.}} \arrow{s,A} \node{Y} \\
+    \node{X/R} \arrow{ne,..,r}{\overline{f}}
+   \end{diagram}
+  \]
+  Falls $f(x) = f(y) \Equiv x\sim y$, so ist $\overline{f}$ bijektiv aber im
+  Allgemeinen \emph{kein} Hom"oomorphismus.
+ \end{bem}
+\end{stz}
+
+\begin{dfn}
+ $A\subset X$ Teilraum, $R_A$ die zur Partition $X=A\cup \bigcup_{x\in X\setminus A}
+ \mdef{x}$ assoziierte "Aquivalenzrelation. Dann schreiben wir
+ \[
+  X/A := X/R_A
+ \]
+ \begin{bsp}
+  \begin{gather}
+   X = [0,1]\subset \R \\
+   S^1 = \mdef[z\in\C]{\left|z\right|=1}\subset \C \cong \R^2 \\
+   A = \mdef{0,1}
+  \end{gather}
+  Dann ist $X/A \cong S^1$. Ist $\phi:X\to Y$ ein Quotient und bijektiv, so ist
+  $\phi$ ein Hom"oomorphismus. Die Einschr"ankung $\exp : [0,1) \to S^1$ ist
+  bijektiv und die Einschr"ankung eines Quotienten aber nicht offen (also kein
+  Hom"oomorphismus, also kein Quotient).
+
+  \subsubsection*{Frage:} Wie vertr"aglich ist die Qutienteneigenschaft mit
+  anderen Konstruktionen?
+ \end{bsp}
+\end{dfn}
+
+\begin{dfn}
+ Sei 
+\end{dfn}

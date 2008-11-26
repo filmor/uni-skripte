@@ -3,12 +3,10 @@
 
 \LoadClass[a4paper]{scrartcl}
 
-\RequirePackage{amsmath}
-\RequirePackage{amsthm}
-\RequirePackage{amssymb}
+\RequirePackage[cmtip,arrow]{xy}
+\RequirePackage{amsmath, amsthm, amssymb, ifthen, pb-diagram, pb-xy}
 \RequirePackage[ngerman]{babel}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{ifthen}
 
 \swapnumbers
 \theoremstyle{definition}
