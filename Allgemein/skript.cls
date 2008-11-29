@@ -3,7 +3,8 @@
 
 \LoadClass[a4paper]{scrartcl}
 
-\RequirePackage{amsmath,amsthm,amssymb,ifthen,makeidx}
+\RequirePackage[cmtip,arrow]{xy}
+\RequirePackage{amsmath, amsthm, amssymb, ifthen, pb-diagram, pb-xy}
 \RequirePackage[ngerman]{babel}
 \RequirePackage[utf8]{inputenc}
 
