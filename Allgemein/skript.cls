@@ -3,12 +3,9 @@
 
 \LoadClass[a4paper]{scrartcl}
 
-\RequirePackage{amsmath}
-\RequirePackage{amsthm}
-\RequirePackage{amssymb}
+\RequirePackage{amsmath,amsthm,amssymb,ifthen,makeidx}
 \RequirePackage[ngerman]{babel}
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{ifthen}
 
 \swapnumbers
 \theoremstyle{definition}
@@ -50,4 +47,6 @@
 \newcommand{\supnorm}[1]{\norm[\infty]{#1}}
 
 \newcommand{\Equiv}{\ensuremath{\Leftrightarrow}}
+
+\makeindex
 

@@ -25,9 +25,9 @@
 \end{bsp}
 
 \begin{dfn}[Stetigkeit]
-    Eine Abbildung $f: X \to Y$ auf metrischen Räumen $(X,d_X)$ und $(Y, d_Y)$ heißt
-    \emph{stetig im Punkt $x_0$}, falls für alle $\epsilon$ ein $\delta$ existiert
-    so dass gilt:
+    Eine Abbildung $f: X \to Y$ auf metrischen Räumen $(X,d_X)$ und $(Y, d_Y)$
+    heißt \emph{stetig im Punkt $x_0$}, falls für alle $\epsilon$ ein $\delta$
+    existiert so dass gilt:
     \begin{align*}
         d_X(x_0, x) < \delta& &\Rightarrow& &d_Y(f(x_0), f(x)) < \epsilon
     \end{align*}
@@ -36,8 +36,10 @@
 
 \begin{dfn}[Folgenkonvergenz]
     Eine Folge $(a_n)$ mit Werten im metrischen Raum $(X, d)$ konvergiert gegen den
-    Grenzwert $a$, falls \begin{align*}
-        \forall \epsilon > 0 \exists N, &\text{s.d.}& \forall n > N: d(a, a_n) < \epsilon
+    Grenzwert $a$, falls
+    \begin{align*}
+        \forall \epsilon > 0\ \exists N,\ &\mathrm{s.d.}& \forall n > N: d(a, a_n)
+        < \epsilon
     \end{align*}
 \end{dfn}
 
@@ -58,19 +60,19 @@
 \begin{dfn}
     Sei $X$ eine Menge, $d_1$, $d_2$ Metriken auf X. $d_1$ und $d_2$ heißen
     \emph{äquivalent} falls
-    \[id: (X, d_1) \to (X, d_2) \quad \text{und}\quad id: (X, d_2) \to (X, d_2)\]
+    \[id: (X, d_1) \to (X, d_2) \quad \mathrm{und}\quad id: (X, d_2) \to (X, d_2)\]
     stetig sind.
 
 \begin{bem}
     $d_1$ und $d_2$ seien äquivalente Metriken auf $X$, $(Y, d')$ metrischer Raum
-    \[\{f:(X, d_1) \to (Y, d') | f \text{stetig} \} = \text{bla}\]
+    \[\{f:(X, d_1) \to (Y, d') | f \mathrm{stetig} \} = \mathrm{bla}\]
 \end{bem}
 \end{dfn}
 
 \begin{stz}
     Sei $X$ eine Menge, $d_1$ und $d_2$ Metriken. Existieren $c_1, c_2: X\to
     \R^+$ so dass
-    \[c_1(x)d_1(x, y) \leq d_2(x,y) \leq c_2(x)d_1(x,y) \forall x,y \in X\text{,}\]
+    \[c_1(x)d_1(x, y) \leq d_2(x,y) \leq c_2(x)d_1(x,y) \forall x,y \in X,\]
     dann sind $d_1$ und $d_2$ äquivalent.
 \end{stz}
 
@@ -187,7 +189,7 @@
 \end{stz}
 
 \begin{stz}
-    $(X,d)$ sei metrischer Raum und $T = \mdef[U\subset X]{U\ \text{ offen}}$.
+    $(X,d)$ sei metrischer Raum und $T = \mdef[U\subset X]{U\ \mathrm{offen}}$.
     Dann gelten:
     \begin{enumerate}
         \item $\emptyset, X \in T$
