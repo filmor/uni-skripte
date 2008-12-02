@@ -49,5 +49,7 @@
 
 \newcommand{\Equiv}{\ensuremath{\Leftrightarrow}}
 
+\newcommand{\id}{\ensuremath{\operatorname{id}}}
+
 \makeindex
 
