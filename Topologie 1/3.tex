@@ -199,5 +199,131 @@
 \end{dfn}
 
 \begin{dfn}
- Sei 
+    Sei  $f:X\to Y$ eine Abbildung von Mengen. Eine Teilmenge $A\subset X$ heißt
+    \emph{saturiert bezüglich f}, falls $A=f^{-1}f(A)$ (die Inklusion gilt
+    immer).
+
+    (Äquivalent: $\exists B\subset Y: f^{-1}(B) = A$)
 \end{dfn}
+
+\begin{stz}
+    Sei $f:X\to Y$ eine Abbildung von topologischen Räumen. Dann sind
+    äquivalent:
+    \begin{enumerate}
+        \item $f$ ist Quotientenabbildung
+        \item $f$ ist stetig, surjektiv und bildet offene saturierte Teilmengen
+            $U\subset X$ auf offene Teilmengen ab
+        \item $f$ ist stetig, surjektiv und bildet abgeschlossene saturierte
+            Teilmengen $A\subset X$ auf abgeschlossene Teilmengen ab
+    \end{enumerate}
+    \begin{proof}
+        \begin{description}
+            \item[$1 \Rightarrow 2$] Sei $A\subset X$ offen und saturiert. Dann
+                gilt $A = f^{-1}(f(A))$ also $f(A)$ offen
+            \item[$2 \Rightarrow 2$] Sei $U\subset Y$ mit $f^{-1}(U)$ offen. Da
+                $f^{-1}(U)$ saturiert ist, gilt $U \overset{\mathrm{surj.}}{=}
+                f(f^{-1}(U))$ offen
+            \item[$1 \Equiv 3$] offen $\Equiv$ abgeschlossen
+        \end{description}
+    \end{proof}
+\end{stz}
+
+\begin{stz}
+    Sei $f:X\to Y$ eine Quotientenabbildung zwischen topologischen Räumen. Seien
+    $A\subset X$, $f(A)\subset Y$ mit Teilraumtopologien versehen und sei $g =
+    f|_A$.
+    \begin{enumerate}
+        \item Ist $A$ offen oder abgeschlossen in $X$ und saturiert bezüglich
+            $f$, dann ist $g$ eine Quotientenabbildung
+        \item Ist $A$ saturiert und ist $f$ offen oder abgeschlossen, so ist $g$
+            eine Quotientenabbildung
+    \end{enumerate}
+    \begin{proof}
+        \begin{enumerate}
+            \item Sei $U\subset A$, sodass $U$ saturiert bezüglich $g$ ist. Wir
+                haben $U\subset A$, also $f^{-1}(f(U))\subset f^{-1}(f(A)) = A$.
+                Also gilt $U = g^{-1}(g(U)) = g^{-1}(f(U)) = A \cap
+                f^{-1}(f(U)) = f^{-1}(f(U))$ also ist $U$ saturiert bezüglich
+                $f$.
+                
+                Sei $A$ offen. Ist $U\subset A$ offen und saturiert bezüglich
+                $g$, so ist $U$ auch offen $X$ und saturiert bezüglich $f$. Da
+                $f$ Quotient ist, gilt $g(U) = f(U)$ ist offen in $Y$ also auch
+                in $f(A)$.
+            \item Sei $V\subset X$. Allgemein gilt $f(A\cap V)\subset f(A) \cap
+                f(V)$ und $A$ saturiert $\Rightarrow$ Gleichheit.
+
+                Sei $U\subset A$ offen bezüglich $A$, also $f(U) = f(A\cap V) =
+                f(A) \cap f(v)$ $\Rightarrow$ g offen $\Rightarrow$ Quotient.
+
+                Ist $f$ offen, so ist $f(V)$ offen, also $f(U) = f(A) \cap f(V)$
+                offen in $f(A)$.
+        \end{enumerate}
+    \end{proof}
+    \begin{bsp}[Produkt zweier Quotienten nicht immer Produkt]
+        $\R$ euklidisch, $\Q\subset \R$ Teilraum, $A = \N$.
+
+        Sei $p:\R\to\R/\N$ der Quotient und $\id : \Q\to\Q$ (auch
+        ein Quotient).
+
+        Dann ist $p\times\id:\R\times\Q\to\R/\N$ bezüglich der Produkttopologie
+        kein Quotient. Hierzu definiert man eine offene saturierte Teilmenge
+        $U\subset\R\times\Q$ so dass $(p\times\id)(U)$ nicht offen ist
+        $\Rightarrow$ (ref. bla) $p\times\id$ ist kein Quotient.
+        \begin{align}
+            U &= \bigcup_{n\in\N} \\
+            U_n &= (\R\times\Q)\cap \overline{U_n},\ \overline{U}
+                    \subset\R\times\R \text{ offen} \\
+            W_n^\pm &= \mdef[(x,y)\in\R^2]{y \gtrless x - n +
+                    \frac{\sqrt 2}{n}} \\
+            Y_n^\pm &= \mdef[(x,y)\in\R^2]{y \gtrless n - x +
+                    \frac{\sqrt 2}{n}} \\
+            \overline{U_n}' &= (W^+_n \cap Y^+_n) \cup (W^-_n \cap Y^-_n) \\
+            \overline{U_n} &= \mdef[(x,y)]{n-\frac{1}{4}<x<n+\frac{1}{4}} \cap
+                    \overline{U_n}'
+        \end{align}
+        $U$ ist offen, weil $\overline{U_n} \subset \R\times\R$ ist.
+
+        $U$ ist saturiert:\\
+        Sei $z\in\R\times\Q$ mit $(\underset{f}{\underbrace{p\times\id}})\in
+        f(U)$. $\exists y\in U$ mit $f(z) = f(y)$.
+        \begin{description}
+            \item[$y=z$,] ok.
+            \item[$y\neq z$,] dann gilt: $y = (n, y_2)$, $z = (m,y_2)$ für
+                $n,m\in\N_+$, also $z\in U$ (nicht saturiert in $\R\times\R$,
+                $\frac{\sqrt 2}{n}\not\in\Q$)
+        \end{description}
+
+        Bild von $U$ ist nicht offen:\\
+        Sei $x=(1,0)\in\R/\N\times\Q$. Wir finden eine Folge
+        $(x_n)\subset(\R/\N\times\Q)\setminus f(U)$ mit $x\in\lim_n x_i$. Wähle
+        $x_n\in B_{\frac{1}{n}}\left( n, \frac{\sqrt 2}{n} \right)\cap (
+        (\R\times\Q)\setminus U)$.
+    \end{bsp}
+\end{stz}
+
+\begin{stz}
+    Sind $f_1:X_1\to Y_1$ und $f_2:X_2\to Y_2$ offene Abbildungen, dann ist
+    $f_1\times f_2$ auch offen. Insbesondere folgt aus $f_i$ offen, surjektiv
+    und stetig auch, dass $f_1\times f_2$ ein Quotient ist.
+    \begin{proof}
+        Ähnlich Aufgabe 4.\!3.
+    \end{proof}
+\end{stz}
+\begin{stz}
+    $X\overset{p}{\to}Y\overset{q}{\to}Z$ Quotientenabbildungen, dann ist auch
+    $q\circ p$ ein Quotient.
+\end{stz}
+
+\begin{bsps}[Quotienten]
+    \begin{enumerate}
+        \item
+            \begin{align}
+                \intertext{Sei:} \\
+                D^n &= \mdef[x\in\R^n]{\norm{x}\leq 1} \\
+                \overset{\cup}{S^{n-1}} &= \mdef[x\in\R^n]{\norm{x} = 1}
+            \end{align}
+            Dann sind $D^n/S^{n-1}$ und $S^n$ homöomorph.
+        \item 
+    \end{enumerate}<++>
+\end{bsps}<++>
