@@ -1,0 +1,1 @@
+../Allgemein/skript.cls
