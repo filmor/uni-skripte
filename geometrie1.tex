@@ -1,0 +1,442 @@
+\documentclass{skript}
+
+\begin{document}
+
+\title{Geometrie I}
+\author{}
+\maketitle
+\tableofcontents
+\renewcommand{\d}{\ensuremath{\mathrm d}}
+
+\section{Untermannigfaltigkeiten in euklidischen Räumen}
+
+\begin{dfn}
+Sei $f : M \to \R^n$ (wobei $M$ eine Mannigfaltigkeit ist) eine
+\emph{Immersion}, das heißt $df(p) : T_p M \to \R^n$ (das Differential als
+Abbildung aus dem Tangentialraum nach $\R^n$) ist injektiv für alle $p\in M$.
+Ist $n=1$ also $f$ eine Kurve, dann ist dieser Begriff gleichbedeutend damit,
+dass die Kurve \emph{regulär} ist.
+
+\begin{bsps}
+  \begin{enumerate}
+    \item[Graphen] Sei $g: U \to \R^k$ glatt mit $f:U\to\R^n$ und $n = m + k$,
+      $U\subset \R^m$ offen. $g$ ist definiert durch $f(p) = (p,g(p))$
+      % Bild: U in der xy-Ebene, f(U) darüber, g(p) Höhe
+
+      Dann gilt $\d f(p)(v) = (v, \d g(p)(v))$, also ist $\d f(p)$ injektiv.
+    \item[Drehflächen] (schon diskutiert)
+    \item Sei $M\subset\R^n$ Untermannigfaltigkeit. Dann ist die Inklusion
+      $\iota : M \to \R^n$ eine Immersion.
+  \end{enumerate}
+\end{bsps}
+\end{dfn}
+
+Sei $I = [a,b]$ und $c : I \to M$ glatt. Dann ist $f\circ c : I \to \R^n$ glatt
+der Länge
+\begin{align}
+  L(f\circ c) &= \int_a^b\left|(f\circ c)'(t)\right| \d t \\
+              &= \int_a^b\left|\d f(c(t))(c'(t))\right| \d t
+\end{align}
+
+Wir möchten nun diese Kurvenlänge schon in $M$ bestimmen können. Dazu erklären
+wir auf $T_pM$ für alle $p\in M$ folgendes Skalarprodukt:
+\begin{align}
+  g_p(v, w) := \sprod[p]{v,w} = \sprod{\d f(p)\cdot v, \d f(p) \cdot w}
+    \quad v,w \in T_pM
+\end{align}
+Die zugehörige Norm bezeichnen wir mit $\norm[p]{\cdot}$, also
+$\norm[p]{v} = \norm{\d f(p)\cdot v}, v\in T_p M$. Damit ist die
+Länge der Kurve:
+\begin{align}
+  L(f\circ c) &= \int_a^b\norm{\d f(c(t))\cdot c'(t)} \d t
+              &= \int_a^b\norm[c(t)]{c'(t)} \d t
+\end{align}
+
+Die innere Geometrie von $M$ wird also durch die Familie $g_p$ von
+Skalarprodukten bestimmt.
+
+
+Sei nun $U\subset M$ offen und $x : U \to U' \subset \R^m$ eine Karte für $M$
+über $U$. Zugeordnet zu dieser Karte haben wir die Koordinatenvektorfelder
+\begin{align}
+  X_j = \frac{\partial}{\partial x^j}, \quad ^\leq j \leq m
+\end{align}
+
+Dann ist $(X_1(p), \dots, X_m(p))$ für alle $p\in M$ eine Basis von $T_p M$.
+
+Wir definieren Funktionen $g_{ij} : U\to \R$ durch
+\begin{align}
+  g_{ij}(p) &:= \sprod[p]{X_i(p), X_j(p)} \\
+            &= \sprod{\d f X_i(p), \d f X_j(p)} \\
+            &= \sprod{\frac{\partial}{\partial x^i(p)},
+            \frac{\partial}{\partial x^j(p)}} \\
+            &= \sprod{f_i(p), f_j(p)}
+\end{align}
+Damit sehen wir, dass die $g_{ij}$ glatt sind.
+
+Seien $X,Y$ Vektorfelder auf $U$,
+\begin{align}
+  X(p) = \xi^i(p)X_i(p), \qquad Y(p) = \eta^i(p)X_i(p)
+\end{align} (Es gilt die Einsteinsche Summenkonvention, hier wird also über $i$
+summiert.)
+
+Nach den Definitionen sind $X$ und $Y$ glatt genau dann, wenn ihre
+\emph{Hauptteile} $\xi, \eta$ bezüglich x glatt sind.
+
+Wir erhalten
+\begin{align}
+  \sprod[p]{X(p), Y(p)} &= \sprod[p]{\xi^i(p)X_i(p), \eta^j(p)X_j(p)} \\
+                        &= \xi^i\eta^jg_{ij}
+\end{align}
+
+Wir haben also das Skalarprodukt bezüglich des Differentials zurückgezogen.
+
+Wir nennen die Familie $g = (g(p))_{p\in M}$ von Skalarprodukten die \emph{erste
+Fundamentalform} von $f$.
+
+
+\begin{dfn}[Lie-Gruppe]
+  Eine \emph{Lie-Gruppe} ist eine Gruppe mit einer differenzierbaren Struktur,
+  \begin{align}
+    g\mapsto g^{-1}, \quad (h,g)\mapsto h\cdot g
+  \end{align}
+  $C^\infty$-Abbildungen sind.
+
+  \begin{bsps}
+    \begin{itemize}
+      \item $\mdef[A\in \R^{n\times m}]{A^tBA=B}$
+      \item $O, Gl, SO, Sl, U$
+    \end{itemize}
+  \end{bsps}
+\end{dfn}
+
+
+\begin{dfn}
+   Eine differenzierbare Abbildung $f : M \to N$, $M,N$ differenzierbaren
+   Mannigfaltigkeiten, heißt \emph{Submersion} falls $\d f : T_x M \to
+   T_{f(x)}N$ surjektiv ist.
+\end{dfn}
+
+\begin{dfn}
+  Sei $G$ eine Gruppe. Eine (linke) \emph{Aktion} ist eine Abbildung $\phi:
+  G\times M \to M$ ($M$ Mannigfaltigkeit) sodass
+  \begin{itemize}
+    \item $\varphi(g_1, \varphi(g_2, m)) = \phi(g_1g_2, m)$
+    \item $\varphi(e, m) = m$
+  \end{itemize}
+
+  $\varphi$ heißt \emph{frei}, falls aus $gm = m$ immer $g = e$ für alle $m\in
+  M$ folgt.
+
+  $\varphi$ heißt \emph{eigentlich}, falls für alle kompakten Mengen
+  $K\subset M$ die Menge $\mdef[g\in G]{gK\cap K \neq \emptyset}$ einen
+  kompakten Abschluss hat.
+
+  $\varphi$ heißt \emph{transitiv}, falls für alle $m_1, m_2 \in M$ ein $s\in G$
+  mit $gm_1 = m_2$ existiert. Der Quotient $M/G = \mdef[\mdef[gm]{g\in G}]{m\in
+  M}$ ist die Menge der Orbits.
+\end{dfn}
+
+\begin{stz}
+  $M$ sei eine Mannigfaltigkeit, $G$ eine Lie-Gruppe die glatt auf $M$ wirkt. Es
+  gibt eine differenzierbare Struktur auf $M/G$ genau dann, wenn die Aktion frei
+  und eigentlich ist.
+  \begin{proof}
+    Gibt's hier nicht :/
+  \end{proof}
+\end{stz}
+
+
+\begin{stz}
+  Die folgenden Aussagen sind äquivalent:
+  \begin{itemize}
+    \item Die Lie-Gruppe $G$ wirkt transitiv und glatt auf $M$, mit $H =
+      \mdef[h\in H]{hm = m}$
+    \item $M$ ist diffeomorph zu $G/H$
+  \end{itemize}
+\end{stz}
+
+\begin{bsp}
+  Sei $p\leq n$, $S_{n,p} = \mdef[(x^k)_{k=1\dots p}]{}$
+  
+\end{bsp}
+Sei $f : M \to \R^n$ eine Immersion. $g$ ist die \emph{erste Fundamentalform} zu
+$F$\dots
+
+$v,w \in T_p M : \sprod[p]{v,w} := \sprod{\d f(p)v, \d f(p)w}$. Falls
+$(x, U)$ eine Karte mit zugehörigen Vektorfeldern
+\begin{align}
+  X_1 = \frac{\partial}{\partial x^1}, \dots, X_m = \frac{\partial}{\partial x^m}
+\end{align}
+Dann ist $g_{ij}(p) := \langle X_i(p), X_j(p)\rangle_p, p\in U$ die
+\emph{Fundamentalmatrix} von $g$ bezüglich $X_1, \dots, X_m$.
+
+Falls $X = \xi^iX_i, Y = \eta^iX_i$ Vektorfelder von $M$ über U sind, dann ist
+$\langle X, Y\rangle = \xi^i\eta^jg_{ij} : U \to \R$.
+
+Falls $c : I \to U \subset M$ glatt, so ist
+\begin{align*}
+  L(f\circ c) &= \int_I\norm{(f\circ c)'(t)}\d t \\
+              &= \int_I\norm{\d f(c(t)) \cdot c'(t)}\d t \\
+              &= \int_I\norm[c(t)]{c'(t)} \d t \\
+              &= \int_I\norm[c(t)]{(c^i)'(t)X_i(c(t))} \d t \\
+              &= \int_I\left( (c^i)'(t)(c^j)'(t)g_{ij}(c(t))
+              \right)^{\frac{1}{2}}\d t \\
+              &=: L_g(c)
+\end{align*}
+die Länge von $c$ bezüglich $g$.
+
+Zu $p,q\in M$ setzen wir
+\begin{align}
+  d(p,q) &= d_g(p,q) &= \inf\mdef[L(c)]{c:[a,b]\to M \text{ ist stückweise glatt
+  mit } c(a) = p \text{ und  } c(b) = q}
+\end{align}
+Wir definieren also den Abstand als das Infimum der Länge aller glatten Wege von
+$p$ nach $q$ in der Mannigfaltigkeit.
+
+\begin{stz}
+  $d$ ist eine Metrik auf $M$, die die auf $M$ vorgegebene Topologie induziert.
+  \begin{proof}
+    Symmetrie und $\triangle$-Ungleichung sind klar. Für alle $p,q \in M$ ist
+    $d(p,q)\geq 0$ (per def.).
+
+    Seien $p,q\in M, p\neq q$. Wähle eine Karte $(x, U)$ von $p$ mit $q\notin U$
+    und $x(p) = 0$. Nun sind die $g_{ij} : U \to \R$ (wie oben) glatt und
+    $\left( g_{ij}(p) \right)$ ist positiv definit $\forall p\in U$.
+
+    Wähle $\delta > 0$ so, dass $\mdef[u\in \R^n]{\norm{u} \leq \delta} = \bar
+    B_\delta (0) \subset \R^m$ enthalten ist in $x(U) =: U'$. Zu diesem $\delta$
+    gibt es dann ein $\epsilon > 0$ mit
+    \begin{align}
+      \epsilon^2 \delta_{ij}v^iv^j &\leq g_{ij}(p')v^iv^j \\
+      &\leq \frac{1}{\epsilon^2} \delta_{ij}v^iv^j
+      \label{eqn:5.g_ungleichung}
+    \end{align}
+    für alle $v = (v^1,\dots,v^m)\in \R^m$ und alle $p'\in U$ mit $x(p')\in \bar
+    B_\delta (0)$.
+
+    Falls nun $c : [a, b] \to M$ eine stückweise glatte Kurve von $p$ nach $q$
+    ist, $c(a) = p$ und $c(b) = q$, dann gibt es ein kleinstes $t_0 > a$ mit
+    $\norm{x\circ c)(t)}$, $0 \leq t < t_0$ und $\norm{(x\circ c)(t_0)} =
+    \delta$. Daher ist
+    \begin{align}
+      L_g(c) &\ge L_g(c\vert_{[a,b]}) = \int_0^{t_0} \sqrt{g_{ij}(c(t))(x^i\circ
+      c)'(t)(x^j\circ c)'(t)}\d t \\
+             &\ge \epsilon \int_0^{t_0}
+             \sqrt{\sum_{i=1}{n}(x^i\circ c)'(t)(x^i\circ c)'(t)}\d t \\ &= \epsilon
+             L\left( (x\circ c)\vert_{[a,t_0]} \right) \ge \epsilon\delta > 0
+             \label{eqn:5.lg_ungleichung}
+    \end{align}
+    Dies folgt aus Ungleichung \ref{eqn:5.g_ungleichung} und daraus, dass
+    $(x\circ c)\vert_{[a,t_0]}$ ein Weg ist, der $0$ mit einem Punkt auf der
+    $\delta$-Sphäre verbindet.
+
+    Damit ist $d_g(p,q) \ge \epsilon\delta$, also ist $d_g$ eine Metrik.
+
+
+    Sei nun $V \subset M$ offen und $p\in V$. Wähle Karte $(x, U)$ um $p$ mit
+    $x(p)$ und $U \subset V$. Wähle $\epsilon$ und $\delta$ wie oben. Falls dann
+    $q\in M$ mit $q\notin U$ (oder $q\in U$ mit $\norm{x(q)}\ge 1$), so ist
+    $d(p,q) \ge \epsilon\delta$ mit dem selben Argument wie oben. Daher ist
+    $\mdef[q\in M]{d_g(p,q)<\epsilon\delta}\subset U \subset V$.
+
+    Sei nun umgekehrt $p\in M$ und
+    \begin{align}
+      B = \mdef[q\in M]{d_g(p,q) < \alpha}
+      \label{}
+    \end{align}
+    für ein $\alpha > 0$. Dann enthält $B$ eine Umgebung (bezüglich der
+    vorgegebenen Topologie) von $p$. Wähle dazu $(x, U)$, $\epsilon$ und
+    $\delta$ wie oben. Sei $u = x(q)$ mit $\norm u \ge \delta$ und sei $c(t) =
+    x^{-1}(tu)$, $0 \le t \le 1$. Nach Ungleichung \ref{eqn:5.lg_ungleichung}
+    ist $L_g(c) = \int_0^1 \sqrt{g_{ij}(c(t))u^iu^j}\d t \le
+    \frac{\norm u}{\epsilon}$. Daher ist $\mdef[q\in U]{\norm{x(q)} <
+    \epsilon\alpha} \subset B$.
+  \end{proof}
+
+  \begin{bsps}
+    \begin{enumerate}
+      \item $\id : \R^m \to \R^m$
+      \item $S^m = \mdef[x\in \R^{m+1}]{\norm x = 1}$, $f : S^m\to\R^{m+1}$ die
+        Inklusion.
+        
+        \emph{Behauptung:} $d(p,q) = \sphericalangle(p,q)$
+
+        Sei dazu $p\in S^m$. Parametrisiere Punkte in $S^m$ durch $q = (\cos t)p
+        + (\sin t)y, y\in p^\perp, \norm y = 1$. Für $0< t < \pi$ ist dann $q\in
+        S^m \setminus \mdef{\pm p}$. Auf dieser Teilmenge erklären wir
+        Vektorfelder $V$ durch $V(q) = -(\sin t)p + (\cos t)y$. Es ist $\norm
+        V(q) = 1$. Sei nun $c:[a,b] \to S^m$ eine stückweise glatte Kurve von
+        $p$ nach $q$.
+        oBdA ist $c([a,b])\subset S^m\setminus\mdef{\pm p}$ und 
+
+        % Es wird gezeigt, dass d(p,q) immer größer gleich ist als der Winkel
+        % zwischen p und q. Wählt man als d(p,q) die Länge des Großkreisstückes,
+        % das p und q enthält erhält man Gleichheit.
+    \end{enumerate}
+  \end{bsps}
+\end{stz}
+
+% 28.10.2009
+Zu $p\in M$ setzen wir $T_pf = \im{\d f(p)} \subset \R^n$, ein linearer
+Unterraum, interpretiert als tangentiale Komponente an das Bild von M unter $f$
+im Punkt $p$. Das orthogonale Komplement von $T_pf$ in $\R^n$ bezeichnen wir mit
+$N_pf$, dem \emph{Normalraum} von $M$ in $p$ bezüglich $f$.
+
+\begin{bsp}
+  $M=S^m$ mit $f:S^m\to \R^{m+1}$ die Inklusion. Dann ist
+  \begin{align*}
+    T_pf &= \mdef[v\in\R^{m+1}]{\sprod{p,v}=0},\\
+    N_pf &= \mdef[v\in\R^{m+1}]{\exists \lambda\in\R : v = \lambda p}
+  \end{align*}
+\end{bsp}
+
+\begin{lem}
+  Zu jedem Punkt $p\in M$ gibt es eine offene Umgebung $U$ in $M$ und (glatte)
+  Vektorfelder $X_1, \dots, X_n : U\to \R^n$ längs $f$ (das heißt $X_j$ ist eine
+  glatte Abbildung wobei $X_j(q)$ als Tangentialvektor des $\R^n$ in $f(q)$
+  interpretiert wird), für die gilt
+  \begin{align*}
+    X_1(q), \dots, X_m(q) \quad & \text{sind Orthonormalbasis von } T_qf \\
+    X_{m+1}(q), \dots, X_n(q) \quad & \text{sind Orthonormalbasis von } N_qf \\
+    \forall q\in U
+  \end{align*}
+  \begin{proof}
+    Sei $(U_0, x)$ eine Karte von $M$ mit $p\in U_0$. Wähle eine Basis
+    $v_{m+1},\dots,v_n$ von $N_pf$. Dann ist $\frac{\partial f}{\partial
+    x^1}(p),\dots,\frac{\partial f}{\partial x^m}(p), v_{m+1},\dots,v_n$ eine
+    Basis des $\R^n$, diese Vektoren sind also linear unabhängig.
+
+    % Bild: Kurve die f(M) darstellt als Linie mit den (linearen) Normal- und
+    % Tangentialräumen
+
+    Die Menge aller $q\in U_0$ so dass diese Vektoren linear unabhängig sind ist
+    offen und enthält $p$. Dies sieht man, indem man die Vektoren als Spalten in
+    eine Matrix schreibt und die Determinante dieser Matrix betrachtet. Da
+    $\operatorname{det}$ stetig ist und die Spaltenfunktionen glatt sind, ist
+    das Urbild der offenen Menge $\R\setminus\mdef{0}$ wieder offen.
+    % Warum ist p enthalten?
+
+    Auf diese Basis in der sich ergebenden offenen Menge wendet man nun das
+    Gram-Schmidt-Verfahren an und erhält so eine Orthonormalbasis.
+    % Warum erhält dies N_pf und T_pf?
+  \end{proof}
+  Insgesamt bilden also die $X_1(q),\dots, X_n(q)$ eine Orthonormalbasis von
+  $\R^n$ für alle $q\in U$.
+
+  \begin{krl}
+    Sei $X:M\to \R^n$ glatt (aufgefasst als Vektorfeld längs $f$). Zu $p\in M$
+    sei $X^\intercal(p)$ die tangentiale und $X^\perp(p)$ die normale Komponente
+    von $X(p)$, also $X^\intercal(p)\in T_pf$ und $X^\perp(p)\in N_pf$. Dann
+    sind $X^\intercal,X^\perp: U\to\R^n$ glatt.
+
+    \begin{proof}
+      Wähle $U$ und $X_1,\dots,X_n$ wie im Lemma. Dann ist
+      $X^\intercal=\sum_{i=1}^m\sprod{X,X_i}X_i$ und $X^\perp = X- X^\intercal$      
+    \end{proof}
+    Dies zeigt, dass die Regularität eine lokale Eigenschaft ist.
+  \end{krl}
+\end{lem}
+
+\subsection{Erste Variation der Bogenlänge}
+
+Sei $c:[a,b]\to M$ eine stückweise glatte Kurve. Eine \emph{stückweise glatte
+Variation} von $c$ ist eine stetige Abbildung $H:I\times [a,b]\to M$, $I =
+(-\eps,\eps)$, so dass eine Unterteilung $t_0 = a < t_1 < \dots < t_k = b$ von
+$[a,b]$ existiert, für die gilt, dass $H\vert_{I\times[t_{i-1},t_i]}\to M$ für
+alle $1 \le i \le k$ glatt ist und $c = H(0,\cdot)$ ist. Zu $H$ setzen wir auch
+$c_s = H(s,\cdot), \ -\eps<s<\eps$. Dann ist also $c = c_0$
+
+Eine Variation ist also eine kleine Abweichung nach "`oben"' und "`unten"' von
+der Kurve.
+
+% Bild: Stück aus \R^2 (-\eps,\eps als Höhe, 0 in der Mitte; x-Achse unterteilt
+% in t_1, \ldots, t_k) geht unter H auf eine gekrümmte Fläche mit c in der Mitte
+
+
+Eine solche Variation (von c) nennen wir \emph{eigentlich}, wenn $c_s(a) = c(a)$
+und $c_s(b) = c(b)$ ist für alle $s\in(-\eps,\eps)$. Sie weicht dann also an den
+Endpunkten nicht ab.
+
+Was uns nun interessiert ist die Abbildung $s\mapsto L(c_s)$, insbesondere ob
+diese einen kritischen Punkt in $s=0$ besitzt, da die Kurve dann eine
+Extremalkurve ist (also kürzeste oder längste Verbindung zwischen den beiden
+Punkten).
+
+Zunächst betrachten wir noch mal die Definition der Länge einer Kurve:
+\begin{align*}
+  L(c_s) &= \int_a^b\norm[c(t)]{c_s'(t)}\d t \\
+  &= \int_a^b\sprod[c_s(t)]{c_s'(t),c_s'(t)}^{\frac{1}{2}} 
+\end{align*}
+Wir nehmen jetzt an, dass $\norm{c'(t)}$ konstant und $\neq 0$ ist. Dann ist
+$c_s'(t) \neq 0$ für alle $t\in[a,b]$ und alle $s\in(-\eps,\eps)$ nahe an $s=0$.
+
+Wir rechnen:
+\begin{align*}
+  \frac{\d L(c_s)}{\d s}\vert_{s=0} &= \frac{\d}{\d
+  s}\vert_{s=0}\int_a^b\sprod[c_s]{c_s', c_s'}^{\frac{1}{2}} \\
+  &= \int_a^b\frac{\d}{\d s}\sprod[H(0,t)]{\frac{\partial H}{\partial
+  t},\frac{\partial H}{\partial t}}^{\frac{1}{2}}(0,t) \\ &=
+  \int_a^b\frac{\sprod{\frac{\partial^2 H}{\partial s\partial t},\frac{\partial
+  H}{\partial t}}}{\sprod{\frac{\partial H}{\partial t},\frac{\partial
+  H}{\partial t}}^{\frac{1}{2}}}(0,t) & \frac{\partial H}{\partial t}(0,t) =
+  c'(t) \\
+  &= \frac{1}{\norm{c'}}\int_a^b \sprod{\frac{\partial^2 H}{\partial s\partial
+  t},\frac{\partial H}{\partial t}}(0,t) \\
+  &= \frac{1}{\norm{c'}}\int_a^b\left(\frac{\d}{\d t}\sprod{\frac{\partial
+  H}{\partial s},\frac{\partial H}{\partial t}} - \sprod{\frac{\partial
+  H}{\partial s},\frac{\partial^2 H}{\partial t^2}}\right)
+\end{align*}
+Wir setzen jetzt $V(t) := \frac{\partial H}{\partial s}(0,t)$, das
+Variationsfeld. Außerdem ist $\frac{\partial H}{\partial t}(0,t) = c'(t)$,
+$\frac{\partial^2 H}{\partial t^2}(0,t) = c''(t)$. Also ist 
+\begin{align*}
+  \frac{\d L(c_s)}{\d s}\vert_{s=0} &=
+  \frac{1}{\norm{c'}}\int_a^b\left(\frac{\d}{\d
+  t}\sprod{V,c'}-\sprod{V,c''}\right)
+  &= \frac{1}{\norm{c'}}\sum_{i=1}^k\sprod{V(t),c'(t)}\vert_{t=t_{i-1}}^{t=t_i}
+  - \frac{1}{\norm{c'}}\int_a^b\sprod{V,c''} \\
+  &=& \frac{1}{\norm{c'}}\left( \sprod{V(b),c'(b)} - \sprod{V(a),c'(a)} +
+  \sum_{i=1}^{k-1}\sprod{V(t_i), c'(t_i-)- c'(t_i+)}  \right) \\
+  & & - \frac{1}{\norm{c'}}\int_a^b\sprod{V,c''}
+\end{align*}
+Dabei sind $c'(t_i\pm)$ die links- und rechtsseitigen Limiten. Ist $c$ an dieser
+Stelle stetig differenzierbar, so fallen diese Terme weg.
+
+Ist die Variation eigentlich (wie oben definiert), so ist $V(a) = 0$ und $V(b) =
+0$.
+
+Wir sagen, dass $c:[a,b]\to M$ eine \emph{Geodätische} ist, wenn $c$ glatt mit
+konstanter Geschwindigkeit ($=$ Norm der ersten Ableitung) ist und
+$\frac{\d L(c_s)}{\d s}\vert_{s=0}$ für alle eigentlichen Variationen von $c$
+gilt.
+
+Um Geodätische zu diskutieren nehmen wir zunächst einmal an, dass $c:[a,b]\to M$
+stückweise glatt mit konstanter Geschwindigkeit $\norm{c'}\neq 0$ ist und dass
+$\frac{\d L(c_s)}{\d s}\vert_{s=0}$ für alle eigentlichen Variationen von $c$
+gilt.
+
+Zunächst bemerken wir dazu, dass $V(t)\in T_{c(t)}M$ ist, $V(t) =
+\frac{\partial H}{\partial s}(0,t)$. Zu vorgegebenen $v_0\in T_{c(t)}M$, $t\in
+(t_{i-1},t_i)$, gibt es eine eigentliche Variation $H$ von $c$ mit
+Variationsfeld $V$, so dass $V(\tau) = 0$ für alle $\tau\in[a,b]\setminus
+(t_{i-1},t_i)$, sonst $V(t) = v_0$.
+
+% Bild: Lange Kurve mit den Endpunkten c(a) und c(b), dazwischen kurzes
+% Teilstück c(t_{i-1}) -> c(t_{i}). Zwischen diesen beiden Punkten ist c(t)
+% markiert, von dem aus ein Pfeil nach außen geht der mit v_0 bezeichnet ist.
+
+Wähle eine Kurve $\sigma = \sigma(s)$, $-\eps<s<\eps$, in $M$ mit $\sigma(0) =
+c(t)$ und $\dot\sigma(0) = v_0$. Wähle eine Karte $(U,x)$ von $c(t)$ mit
+$x(c(t))=0$. Wähle eine glatte Funktion $\phi=\phi(\tau)$ mit $\phi(t) = 1$ und
+$\phi(\tau) = 0$ für $\tau \le t- \delta$, $\tau \ge t + \delta$ und setze
+\begin{align*}
+  H(s,\tau) = \begin{cases}
+    c(\tau) & a \le \tau \le t- \delta, t+\delta\le\tau\le b \\
+    x^{-1}(x(c(\tau)) + \phi(\tau x(\sigma(s)))) & \text{sonst}
+  \end{cases}
+\end{align*}
+
+% Bilder, Variation nur in dem kleinen Teilstück von obigen Bild
+
+\end{document}

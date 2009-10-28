@@ -62,6 +62,7 @@
 \newcommand{\Equiv}{\ensuremath{\Leftrightarrow}}
 
 \newcommand{\id}{\ensuremath{\operatorname{id}}}
+\newcommand{\im}{\ensuremath{\operatorname{im}}}
 
 \makeindex
 
