@@ -8,6 +8,13 @@
 \RequirePackage[ngerman]{babel}
 \RequirePackage[utf8]{inputenc}
 
+\DeclareMathSymbol{,}{\mathpunct}{letters}{"3B}
+\DeclareMathSymbol{.}{\mathord}{letters}{"3B}
+\DeclareMathSymbol{\decimal}{\mathord}{letters}{"3A}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+
 \swapnumbers
 \theoremstyle{definition}
 \newtheorem{dfn}{Definition}[section]
@@ -36,6 +43,11 @@
     \ifthenelse{\equal{#1}{\empty}}
         {\ensuremath{\left\lbrace #2\right\rbrace}}
         {\ensuremath{\left\lbrace #1\ |\ #2\right\rbrace}}
+}
+
+\newcommand{\sprod}[2][\empty]{
+    \ensuremath{\langle #2 \rangle}
+    \ifthenelse{\equal{ #1 }{\empty}}{}{\ensuremath{_{#1}}}
 }
 
 \newcommand{\norm}[2][\empty]{

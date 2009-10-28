@@ -1,7 +1,7 @@
 Sei $f : M \to \R^n$ eine Immersion. $g$ ist die \emph{erste Fundamentalform} zu
 $F$\dots
 
-$v,w \in T_p M : \langle v,w\rangle_p \langle \d f(p)v, \d f(p)w\rangle$. Falls
+$v,w \in T_p M : \sprod[p]{v,w} := \sprod{\d f(p)v, \d f(p)w}$. Falls
 $(x, U)$ eine Karte mit zugehörigen Vektorfeldern
 \begin{align}
   X_1 = \frac{\partial}{\partial x^1}, \dots, X_m = \frac{\partial}{\partial x^m}
@@ -13,15 +13,15 @@ Falls $X = \xi^iX_i, Y = \eta^iX_i$ Vektorfelder von $M$ über U sind, dann ist
 $\langle X, Y\rangle = \xi^i\eta^jg_{ij} : U \to \R$.
 
 Falls $c : I \to U \subset M$ glatt, so ist
-\begin{align}
-%  L(f\circ c) &= \int_I\norm{(f\circ c)'(t)}\d t \\
-           %   &= \int_I\norm{\d f(c(t)) \cdot c'(t)}\d t \\
-           %   &= \int_I\norm{c'(t)}_{c(t)}\d t \\
-%              &= \int_I\norm{(c^i)'(t)X_i(c(t))}_{c(t)}\d t \\
-%              &= \int_I\left( (c^i)'(t)(c^j)'(t)g_{ij}(c(t))
-%              \right)^{\frac{1}{2}\d t \\
+\begin{align*}
+  L(f\circ c) &= \int_I\norm{(f\circ c)'(t)}\d t \\
+              &= \int_I\norm{\d f(c(t)) \cdot c'(t)}\d t \\
+              &= \int_I\norm[c(t)]{c'(t)} \d t \\
+              &= \int_I\norm[c(t)]{(c^i)'(t)X_i(c(t))} \d t \\
+              &= \int_I\left( (c^i)'(t)(c^j)'(t)g_{ij}(c(t))
+              \right)^{\frac{1}{2}}\d t \\
               &=: L_g(c)
-\end{align}
+\end{align*}
 die Länge von $c$ bezüglich $g$.
 
 Zu $p,q\in M$ setzen wir
@@ -104,9 +104,9 @@ $p$ nach $q$ in der Mannigfaltigkeit.
         + (\sin t)y, y\in p^\perp, \norm y = 1$. Für $0< t < \pi$ ist dann $q\in
         S^m \setminus \mdef{\pm p}$. Auf dieser Teilmenge erklären wir
         Vektorfelder $V$ durch $V(q) = -(\sin t)p + (\cos t)y$. Es ist $\norm
-        V(q) = 1$. Sei nun $c:[a,b] \to S^m$ eine stückweise glattte Kurve von
+        V(q) = 1$. Sei nun $c:[a,b] \to S^m$ eine stückweise glatte Kurve von
         $p$ nach $q$.
         oBdA ist $c([a,b])\subset S^m\setminus\mdef{\pm p}$ und 
-    \end{enumerate}<++>
-  \end{bsps}<++>
+    \end{enumerate}
+  \end{bsps}:w
 \end{stz}

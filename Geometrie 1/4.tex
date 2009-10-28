@@ -9,7 +9,7 @@ Abbildung aus dem Tangentialraum nach $\R^n$) ist injektiv für alle $p\in M$.
 Ist $n=1$ also $f$ eine Kurve, dann ist dieser Begriff gleichbedeutend damit,
 dass die Kurve \emph{regulär} ist.
 
-\begin{bsp}
+\begin{bsps}
   \begin{enumerate}
     \item[Graphen] Sei $g: U \to \R^k$ glatt mit $f:U\to\R^n$ und $n = m + k$,
       $U\subset \R^m$ offen. $g$ ist definiert durch $f(p) = (p,g(p))$
@@ -20,7 +20,7 @@ dass die Kurve \emph{regulär} ist.
     \item Sei $M\subset\R^n$ Untermannigfaltigkeit. Dann ist die Inklusion
       $\iota : M \to \R^n$ eine Immersion.
   \end{enumerate}
-\end{bsp}
+\end{bsps}
 \end{dfn}
 
 Sei $I = [a,b]$ und $c : I \to M$ glatt. Dann ist $f\circ c : I \to \R^n$ glatt
@@ -30,19 +30,18 @@ der Länge
               &= \int_a^b\left|\d f(c(t))(c'(t))\right| \d t
 \end{align}
 
-
 Wir möchten nun diese Kurvenlänge schon in $M$ bestimmen können. Dazu erklären
 wir auf $T_pM$ für alle $p\in M$ folgendes Skalarprodukt:
 \begin{align}
-  g_p(v, w) := \langle v,w\rangle_p = \langle \d f(p)\cdot v, \d
-  f(p) \cdot w\rangle \quad v,w \in T_pM
+  g_p(v, w) := \sprod[p]{v,w} = \sprod{\d f(p)\cdot v, \d f(p) \cdot w}
+    \quad v,w \in T_pM
 \end{align}
 Die zugehörige Norm bezeichnen wir mit $\norm[p]{\cdot}$, also
 $\norm[p]{v} = \norm{\d f(p)\cdot v}, v\in T_p M$. Damit ist die
 Länge der Kurve:
 \begin{align}
-  L(f\circ c) = \int_a^b\left|\d f(c(t))\cdot c'(t)\right|\d t =
-  \int_a^b\left|c'(t)\right|_{c(t)}\d t
+  L(f\circ c) &= \int_a^b\norm{\d f(c(t))\cdot c'(t)} \d t
+              &= \int_a^b\norm[c(t)]{c'(t)} \d t
 \end{align}
 
 Die innere Geometrie von $M$ wird also durch die Familie $g_p$ von
@@ -59,26 +58,27 @@ Dann ist $(X_1(p), \dots, X_m(p))$ für alle $p\in M$ eine Basis von $T_p M$.
 
 Wir definieren Funktionen $g_{ij} : U\to \R$ durch
 \begin{align}
-  g_{ij}(p) &:= \langle X_i(p), X_j(p)\rangle_p \\
-            &= \langle \d f X_i(p), \d f X_j(p)\rangle \\
-            &= \langle \frac{\partial}{\partial x^i(p)},
-            \frac{\partial}{\partial x^j(p)} \\
-            &= \langle f_i(p), f_j(p) \rangle
+  g_{ij}(p) &:= \sprod[p]{X_i(p), X_j(p)} \\
+            &= \sprod{\d f X_i(p), \d f X_j(p)} \\
+            &= \sprod{\frac{\partial}{\partial x^i(p)},
+            \frac{\partial}{\partial x^j(p)}} \\
+            &= \sprod{f_i(p), f_j(p)}
 \end{align}
 Damit sehen wir, dass die $g_{ij}$ glatt sind.
 
 Seien $X,Y$ Vektorfelder auf $U$,
 \begin{align}
   X(p) = \xi^i(p)X_i(p), \qquad Y(p) = \eta^i(p)X_i(p)
-\end{align} (Einsteinsche Summenkonvention!)
+\end{align} (Es gilt die Einsteinsche Summenkonvention, hier wird also über $i$
+summiert.)
 
 Nach den Definitionen sind $X$ und $Y$ glatt genau dann, wenn ihre
 \emph{Hauptteile} $\xi, \eta$ bezüglich x glatt sind.
 
-Wir ethalten
+Wir erhalten
 \begin{align}
-  (X(p), Y(p))_p &= (\xi^i(p)X_i(p), \eta^j(p)X_j(p))_p
-  &= \xi^i\eta^jg_{ij}
+  \sprod[p]{X(p), Y(p)} &= \sprod[p]{\xi^i(p)X_i(p), \eta^j(p)X_j(p)} \\
+                        &= \xi^i\eta^jg_{ij}
 \end{align}
 
 Wir haben also das Skalarprodukt bezüglich des Differentials zurückgezogen.
