@@ -387,18 +387,31 @@ Wir rechnen:
   H}{\partial s},\frac{\partial H}{\partial t}} - \sprod{\frac{\partial
   H}{\partial s},\frac{\partial^2 H}{\partial t^2}}\right)
 \end{align*}
+\begin{align*}
+  \frac{\d}{\d s}L(c_s)\vert_{s=0} \\
+    &= \int_a^b\frac{\d}{\d s} \norm[c_s']{c_s'}\d t\vert_{s=0} \\
+    &= \int_a ^b \frac{\d}{\d s}\sprod[c_s']{c_s', c_s'}^\frac12
+       \d t\vert_{s=0} \int_a^b \frac{\d}{\d s}
+       \sprod{\d f(c_s(t))c_s'(t), \d f(c_s(t))c_s(t)}^\frac12\d t
+       \vert_{s=0} \\
+    &= \int_a^b\frac{\d}{\d s}\sprod{(f\circ c_s)'(t),(f \circ c_s)'(t)}
+       \frac12\d t\vert_{s=0} \\
+  %  &= \dots = \frac1\norm[c']{\sprod{V(b),c'(b)}-sprod{V(a),C(a)}}
+  %     + \sum_{i=1}^k-1 \sprod{V(t_i),c'(t_i-)-c'(t_i+)}
+  %     + \int_a^b \sprod{(f\circ c)''(t), \d f(c(t))V(t)}
+\end{align*}
 Wir setzen jetzt $V(t) := \frac{\partial H}{\partial s}(0,t)$, das
 Variationsfeld. Außerdem ist $\frac{\partial H}{\partial t}(0,t) = c'(t)$,
 $\frac{\partial^2 H}{\partial t^2}(0,t) = c''(t)$. Also ist 
 \begin{align*}
-  \frac{\d L(c_s)}{\d s}\vert_{s=0} &=
-  \frac{1}{\norm{c'}}\int_a^b\left(\frac{\d}{\d
-  t}\sprod{V,c'}-\sprod{V,c''}\right)
+  \frac{\d L(c_s)}{\d s}\vert_{s=0}
+    &= \frac1{\norm{c'}}\int_a^b\left(\frac{\d}{\d
+  t}\sprod{V,c'}-\sprod{V,c''}\right) \\
   &= \frac{1}{\norm{c'}}\sum_{i=1}^k\sprod{V(t),c'(t)}\vert_{t=t_{i-1}}^{t=t_i}
   - \frac{1}{\norm{c'}}\int_a^b\sprod{V,c''} \\
-  &=& \frac{1}{\norm{c'}}\left( \sprod{V(b),c'(b)} - \sprod{V(a),c'(a)} +
+  &= \frac{1}{\norm{c'}}\left( \sprod{V(b),c'(b)} - \sprod{V(a),c'(a)} +
   \sum_{i=1}^{k-1}\sprod{V(t_i), c'(t_i-)- c'(t_i+)}  \right) \\
-  & & - \frac{1}{\norm{c'}}\int_a^b\sprod{V,c''}
+  &= - \frac{1}{\norm{c'}}\int_a^b\sprod{V,c''}
 \end{align*}
 Dabei sind $c'(t_i\pm)$ die links- und rechtsseitigen Limiten. Ist $c$ an dieser
 Stelle stetig differenzierbar, so fallen diese Terme weg.
@@ -438,5 +451,53 @@ $\phi(\tau) = 0$ für $\tau \le t- \delta$, $\tau \ge t + \delta$ und setze
 \end{align*}
 
 % Bilder, Variation nur in dem kleinen Teilstück von obigen Bild
+
+$c:[a,b] \to M$ stückweise glatt, $\norm{c'}=const\neq0$ mit $
+\frac{\d L(c_s)}{\d s}\vert_{s=0}=0$ für alle eigentichen Variationen $c_ss$ von
+$c=c_0$.
+%Bild Eigentliche Variation von Kurven
+$c_s(a)=c(a)$, $cs(b)=c(b)$ $\forall s$
+\emph{Behauptung:} Dann ist $c$ glatt und $(f\circ c)''$ ist normal zu
+
+%Da fehlt was
+Damit gilt für alle eigentlichen Variationen von c:
+$\frac{\d L(c_s)}{\d t} =
+\frac{1}{\norm[c']{\sum_{i=1}^{k-1}\sprod{V(t_i),c'(t_i-)-c'(t_i+)}}}$ Für alle
+$t \in (a,b)$ ist $c'(t+) = c'(t-)$. Zum Beweis nehmen wir einmal an $u =
+C'(t-)-c'(t+)\neq 0$.  Wähle Koordinaten $x$ um $c(t)$ und schreibe $u=u^i
+\frac{\partial t}{\partial x^i}(c(t))$. Wähle $\delta>0$, sodass $c$ im
+intervall $[t-s\delta,t+2\delta]$ außer bei $t=\tau$ keinen weiteren Knick hat.
+Für $\phi$ wie oben und $\eps>0$ klein genug, setze $H(s,t)=\begin{cases}c(\tau)
+  u\leq\tau\leq t-s\delta \end{cases}$
+
+Damit folgt $c'(t-) = c'(t+) \forall t\in(a,b)$. In diesem Sinne ist $c$ glatt
+($C^1$).
+\begin{bsps}
+  \begin{enumerate}
+    \item Sei $S^m(r) = \mdef[x\in\R^{m+1}]{\norm{x} = r}$ wobei $r > 0$
+      vorgegeben ist, $f$ die Inklusion. Für alle $x\in S^m(r)$ und $v\perp x$
+      mit $\norm{v} = r$ ist $\cos t \cdot x + \sin t \cdot v =: c(t)$, $t\in
+      \R$ Geodätische mit $c(0) = x$, $c'(0) = v$. Ferner ist $c''(t) = -\cos
+      t\cdot x - \sin t \cdot v$, also ist $c''(t)\in N_{c(t)}f,
+      f:S^m\to\R^{m+1}$ die Inklusion $\forall t\in\R$. Also ist $c$ eine
+      Geodätische.
+    \item Sei $(r,h):I\to\R^2$ glatt und nach Bogenlänge parametrisiert. Dann
+      ist $f:I\times\R\to\R^3$ mit $f(t,\phi)= (r(t)\cos\phi, r(t)\sin\phi,
+      h(t))$. Für festes $\phi_0$ ist $c:I\to\R^3, c(t) := f(t,\phi_0)$ eine
+      Geodätische:
+      \begin{align*}
+        c'(t) &= (r'(t)\cos\phi,r'(t)\sin\phi,h'(t)) \\
+        c''(t) &= (r''(t)\cos\phi,r''(t)\sin\phi,h''(t)) \\
+        T_{c(t)}f &= \sprod{\mdef{\frac{\partial f}{\partial t}(t,\phi_0),
+        \frac{\partial f}{\partial \phi}(t,\phi_0)}} \\
+        &= \sprod{\mdef{c'(t), (-r(t)\sin\phi_0, r(t)\cos\phi_0, 0)}}
+      \end{align*}
+      Nun ist $\sprod{c'(t), c''(t)} = 0$, denn $\sprod{c',c'} = \mathrm{const}
+      = 1$ und $\sprod{c''(t),\frac{\partial f}{\partial\phi}(t,\phi_0)} = 0$,
+      also ist $c$ Geodätische.
+  \end{enumerate}
+\end{bsps}
+
+
 
 \end{document}
