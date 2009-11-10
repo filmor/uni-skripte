@@ -553,4 +553,171 @@ Aus der Theorie der gewöhnlichen Differentialgleichungen kommt unter anderem:
   \item Falls $c: I \to N$ Geodätische, so ist auch $\tilde{c}=c(at+b)$, 
     $\mdef[t\in\R]{at+b\in I}$ eine.
 \end{enumerate}
+
+\subsection{Christoffelsymbole}
+% Bild Teilmenge U einer Mfk geht unter x auf U'\subset \R^m, f \to \R^n
+Die $\Gamma_{ij}^k:U\to\R$ sind glatt. Betrachte
+\begin{align*}
+  \sprod[p]{\Gamma^k_{ij}\frac{\partial}{\partial x^k},\frac{\partial}{\partial
+  x^l}} &= \Gamma_{ij}^k\sprod[p]{\frac{\partial}{\partial
+  x^k},\frac{\partial}{\partial x^l}} \\
+  &= \Gamma_{ij}^kg_{kl} 
+\end{align*}, wobei $\sprod[p]{\cdot,\cdot}$ die erste Fundamentalform von $f$
+ist. Dies ist gleich dem gewöhnlichen Skalarprodukt
+\begin{align*}
+  \sprod{\Gamma^k_{ij}f_k, f_l} &= \sprod{f_{ij}^\T, f_l} \\
+  &= \sprod{f_{ij}, f_{l}}
+\end{align*}, wobei $f_i(p) := \frac{\partial f}{\partial x^i}(p) = \d f(p)\cdot
+\frac{\partial}{\partial x^u}\vert_p \in \R^n$ gilt.
+
+Nun definieren wir
+\begin{align*}
+  g_{jl,i} &:= \frac{\partial}{\partial x^i}\sprod[p]{\frac{\partial}{\partial
+  x^j},\frac{\partial}{\partial x^l}} = \frac{\partial}{\partial x^i}\sprod{f_j,
+  f_l} \\
+  &= \sprod{f_{ij}, f_l} + \sprod{f_j, f_{il}}
+\end{align*}
+
+Dafür gilt folgendes:
+\begin{align*}
+  g_{ik,j} + g_{jk,i} - g_{ij,k} &= 2\sprod{f_{ij}, f_k}
+\end{align*}
+was man einfach durch aufsummieren erhält.
+
+Nun sei $k \to l$ (Indexumbenennung). Dann ist
+\begin{align*}
+  g_{il,j} + g_{jl,i} - g_{ij,l} = 2\sprod{f_{ij}, f_l} = 2\Gamma^k_{ij}g_{kl}
+\end{align*}
+
+Bezeichne mit $g^{ij}$ die Koeffizienten der zu $(g_{ij})$ inversen Matrix, also
+$g_{ij}g^{jk} = \delta^k_i$. Damit erhalten wir nämlich
+\begin{align*}
+  \Gamma^m_{ij} &= \Gamma_{ij}^kg_{kl}g^{lm} \\
+  &= \frac{1}{2}g^{lm}\left(g_{il,j} + g_{jl,i} - g_{ij,l}\right)
+\end{align*}
+
+Seien $X,Y$ Vektorfelder auf $M$ (oder einer offenen Teilmenge von $M$). Dann
+ist $\d f\cdot Y:U\to\R^n$, $p\mapsto\d f(p)\cdot Y(p)$ ein \emph{tangentiales
+Vektorfeld} längs $f$, $\d f(p)\cdot Y(p)\in T_pf$. Die Ableitung von $\d f
+\cdot Y$ in Richtung $X$ ist eine glatte Abbildung $U\to \R^n$ aber im
+Allgemeinen nicht mehr tangential längs $f$.
+
+Wir zerlegen nun
+\begin{align*}
+  X(\d f\cdot Y) = \left( X(\d f\cdot Y) \right)^\T + \left( X(\d f \cdot Y)
+  \right)^\perp
+\end{align*}
+also $\left( X_p(\d f\cdot Y) \right)^\T, \left( X_p(\d f\cdot Y)
+\right)^\perp\in N_pf$.
+
+Über $U$ wie oben schreibe $X = \xi^i\frac{\partial}{\partial x^i}$ und $Y =
+\eta^i\frac{\partial}{\partial x^i}$.
+
+Dann ist 
+\begin{align*}
+  \d f\cdot Y &= \d f\left( \eta^i\frac{\partial}{\partial x^i} \right) \\
+  &= \eta^i\d f\cdot\frac{\partial}{\partial x^i} = \eta^if_i
+\end{align*}
+und
+\begin{align*}
+  X(\d f\cdot Y) &= X(\eta^if_i) = X(\eta^i)f_i + \eta^iX(f_i) \\
+  &= X(\eta^i)f_i + \xi^i\eta^j\frac{\partial f_j}{\partial x^i} \\
+  &= X(\eta^i)f_i + \xi^i\eta^jf_{ij} \\
+  &= \xi^i\frac{\partial\eta^j}{\partial x^i}f_j + \xi^i\eta^jf_{ij}
+\end{align*}
+
+Nun können wir $f_{ij}$ in den Christoffelsymbolen ausdrücken. Über $U$ ist
+damit
+\begin{align*}
+  \left(X(\d f\cdot Y)\right)^\top &= X(\eta^i)f_i + \xi^i\eta^jf_{ij}^\top \\
+  &= \left( X(\eta^k) + \xi^i\eta^j\Gamma^k_{ij} \right)f_k
+\end{align*}
+Der zweite Term in der Klammer ist dabei ein Korrekturterm.
+
+\begin{dfn}[kovariante Ableitung]
+  Die \emph{kovariante Ableitung} von $Y$ in Richtung $X$ ist definiert durch
+  \begin{align*}
+    \d f(\nabla_XY) = \left( X(\d f\cdot Y) \right)^\top
+  \end{align*}
+  Mit Koordinaten $x$ über $U$ wie oben ist
+  \begin{align*}
+    \nabla_XY := \left( X(\eta^k) + \xi^i\eta^j\Gamma^k_{ij}
+    \right)\frac{\partial}{\partial x^2}
+  \end{align*}
+  wobei $X = \xi^i\frac{\partial}{\partial x^i}$, $Y =
+  \eta^i\frac{\partial}{\partial x^i}$ sind. Damit ordnet der
+  \emph{Zusammenhang} $\nabla$ glatten Vektorfeldern $X, Y$ das glatte
+  Vektorfeld $\nabla_XY$ zu.
+\end{dfn}
+
+\begin{enumerate}
+  \item Seien jetzt $X,Y,Z$ glatte Vektorfelder auf $M$.
+    Dann ist $\sprod{Y,Z}:M\to\R, p\mapsto\sprod[p]{Y(p), Z(p)}$ eine glatte
+    Funktion und (nach der Definition der ersten Fundamentalform
+    \begin{align*}
+      X\sprod{Y,Z} &= X\sprod{\d f\cdot Y, \d f\cdot Z} = \sprod{\left( X(\d
+      f\cdot Y) \right)^\top, \d f\cdot Z} + \sprod{\d f\cdot Y, \left( X(\d
+      f\cdot Z \right)^\top} \\
+      &= \sprod{\d f\cdot\nabla_XY,\d f\cdot Z} + \sprod{\d f\cdot Y, \d
+      f\cdot\nabla_XZ} \\
+      &= \sprod{\nabla_XY,Z} + \sprod{Y,\nabla_XZ}
+    \end{align*}, das heißt, $\nabla$ ist \emph{metrisch} (oder auch
+    \emph{riemannsch}):
+    \begin{align*}
+      X\sprod{Y,Z} = \sprod{\nabla_XY,Z} + \sprod{Y,\nabla_XZ} &\quad&
+      \text{(Produktregel)}
+    \end{align*}
+
+  \item Mit Koordinaten $x$ über $U$ und Vektorfeldern $X,Y$ wie oben gilt über
+    $U$
+    \begin{align*}
+      \nabla_XY - \nabla_YX &= \left( X(\eta^k) + \xi^i\eta^j\Gamma^k_{ij} -
+      Y(\xi^k) - \eta^j\xi^i\Gamma_{ji}^k \right)\frac{\partial}{\partial x^k}
+      \\
+      &= \left( X(\eta^k) - Y(\xi^k) \right)\frac{\partial}{\partial x^k} =
+      \left[ X, Y \right]
+    \end{align*}, das heißt $\nabla$ ist \emph{symmetrisch} (oder auch
+    \emph{torsionslos}).
+
+  \item Ferner gilt: $\nabla_XY$ ist \R-linear in $X$ und in $Y$.
+  \item \ldots und falls $\phi:M\to\R$ glatt ist
+    \begin{align*}
+      &\nabla_{\phi X}Y &= \phi\nabla_XY
+      \text{und} & \nabla_X(\phi Y) &= X(\phi)Y + \phi\nabla_XY
+    \end{align*}
+  \item Falls $X_1(p) = X_2(p)$ für ein $p\in M$, so ist
+    \begin{align*}
+      \left( \nabla_{X_1}Y \right)(p) = \left( \nabla_{X_2}Y \right)(p)
+    \end{align*}
+\end{enumerate}
+
+$\nabla$ heißt auch der zur ersten Fundamentalform gehörige
+\emph{Levi-Civita-Zusammenhang}. Die für den Zusammenhang im Prinzip
+ausreichenden Eigenschaften sind 3 und 4, für \emph{Levi-Civita} nötig sind 1
+und 2.
+
+\subsection{Noch etwas zur geodätischen Differentialgleichung}
+Seien $X,Y$ Vektorfelder auf $M$.
+\begin{align*}
+  X(\d f\cdot Y) &= \d f\cdot\nabla_XY + \left( X(\d f\cdot Y) \right)^\perp \\
+  &= \d f\cdot\nabla_XY + S(X,Y)
+\end{align*}
+wobei $S$ die \emph{zweite Fundamentalform} von $f$ ist. Die zweite
+Fundamentalform ist \R-linear in $X$ und in $Y$ und ferner ist
+\begin{enumerate}
+  \item $S(\phi X, Y) = \phi S(X,Y)$, $\phi:M\to\R$ glatt
+  \item $S(X,Y) = S(Y,X)$
+\end{enumerate}
+\subsubsection{Beweise dazu:}
+\begin{align*}
+  S(\phi, X, Y) &= \phi X(\d f\cdot Y) - \d f(\nabla_{\phi X}Y) \\
+  &= \phi\left( X(\d f\cdot) - \d f(\nabla_XY) \right) \\
+  &= \phi S(X,Y)
+\end{align*}
+und 
+\begin{align*}
+  S(X,Y) -S(Y,X) &= \left( X(\d f\cdot Y) - Y(\d f\cdot X) - \d f(\nabla_XY) +
+  \d f(\nabla_YX) \right) \\
+  &= \d f\left( \left[ X,Y \right] - \nabla_XY + \nabla_YX \right) = 0
+\end{align*}
 \end{document}
