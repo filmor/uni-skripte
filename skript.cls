@@ -63,6 +63,7 @@
 
 \newcommand{\id}{\ensuremath{\operatorname{id}}}
 \newcommand{\im}{\ensuremath{\operatorname{im}}}
+\newcommand{\T}{\ensuremath{\top}}
 
 \makeindex
 

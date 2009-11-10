@@ -326,13 +326,13 @@ $N_pf$, dem \emph{Normalraum} von $M$ in $p$ bezüglich $f$.
 
   \begin{krl}
     Sei $X:M\to \R^n$ glatt (aufgefasst als Vektorfeld längs $f$). Zu $p\in M$
-    sei $X^\intercal(p)$ die tangentiale und $X^\perp(p)$ die normale Komponente
-    von $X(p)$, also $X^\intercal(p)\in T_pf$ und $X^\perp(p)\in N_pf$. Dann
-    sind $X^\intercal,X^\perp: U\to\R^n$ glatt.
+    sei $X^\top(p)$ die tangentiale und $X^\perp(p)$ die normale Komponente
+    von $X(p)$, also $X^\top(p)\in T_pf$ und $X^\perp(p)\in N_pf$. Dann
+    sind $X^\top,X^\perp: U\to\R^n$ glatt.
 
     \begin{proof}
       Wähle $U$ und $X_1,\dots,X_n$ wie im Lemma. Dann ist
-      $X^\intercal=\sum_{i=1}^m\sprod{X,X_i}X_i$ und $X^\perp = X- X^\intercal$      
+      $X^\top=\sum_{i=1}^m\sprod{X,X_i}X_i$ und $X^\perp = X- X^\top$      
     \end{proof}
     Dies zeigt, dass die Regularität eine lokale Eigenschaft ist.
   \end{krl}
@@ -498,6 +498,59 @@ Damit folgt $c'(t-) = c'(t+) \forall t\in(a,b)$. In diesem Sinne ist $c$ glatt
   \end{enumerate}
 \end{bsps}
 
+\subsection{Die geodätische Differentialgleichung}
 
+Sei $c: I\to M$ eine glatte Kurve. Sei $t_0\in I $ und $x:U\to U'\subset \R^m$
+eine Karte von $M$ um $c(t_0)$. Nach eventueller Verkleinerung von I nehmen wir
+a, dass $c(I) \subset U'$.
+% Bild: Menge U mit einer Kurve darin und dem Punkt c(t_0) in der Mitte,
+%       wird durch f auf \R^n abgebeildet und durch x auf U' \subset \R^m
 
+Dann ist $f\circ c = (f\circ x^{-1})\circ(x\circ c)$ und damit
+\begin{align*}
+  (f\circ c)'(t) &= \frac{\partial f}{\partial x^i}(c(t))\cdot
+  \frac{\d(x^i\circ c)}{\d t}(t) \\
+  &= f_i(c(t))\frac{\d c^i}{\d t}(t), & f_i = \frac{\partial f}{\partial x^i},
+  c^i = x^i\circ c..
+\end{align*}
+Kürzer geschrieben ist das $(f\circ c)' = f_i\cdot\frac{\d c^i}{\d t}$.
+
+\subsubsection{Zweite Ableitung}
+\begin{align*}
+  (f\circ c)'' = f_{ij}\frac{\d c^j}{\d t}\frac{\d c^endi}{\d t} + f_i \cdot
+  \frac{\d^2c}{\d t^2}
+\end{align*}
+mit $f_{ij} = \frac{\partial^2 f}{\partial x_i\partial x_j}$. Der tangentiale
+Anteil ist
+\begin{align*}
+  T_{c(t)}f \ni \left( (f\circ c)''(t) \right)^\top &=
+  \left( f_{ij}(c(t))\frac{\d c^i}{\d t}(t)\frac{\d c^j}{\d t}(t) +
+  f_i(c(t)\frac{\d^2 c}{\d t^2}(t) \right)^\top \\
+  &= f_{ij}^\top(c(t)) \frac{\d c^i}{\d t}(t) \frac{\d c^j}{\d t}(t) + f_i(c(t))
+  \frac{\d^2 c^i}{\d t^2}(t)
+\end{align*}
+
+Weil die $f_i(p)$, $1\le i\le m$, $p\in U$, eine Basis von $T_pf$ sind, gibt es
+Skalare $\Gamma^k_{ij}$ mit $f_{ij}(p) = \Gamma^k_{ij}(p)f_k(p)$. Nach einem
+schon bewiesenen Lemma ist $f_{ij}^\top:U\to\R^n$ glatt, also sind auch die
+$\Gamma^k_{ij}:U\to\R$ glatt. Man nennt die $\Gamma_{ij}^k$
+\emph{Christoffelsymbole}.
+
+Damit erhalten wir die \emph{geodätische Differentialgleichung} bezüglich der
+Karte $x$:
+\begin{align*}
+  \frac{\d^2c^k}{\d t^2} + \Gamma^k_{ij}\frac{\d c^i}{\d t}(t)
+  \frac{\d c^j}{\d t}(t) = 0
+\end{align*}
+
+Aus der Theorie der gewöhnlichen Differentialgleichungen kommt unter anderem:
+\begin{enumerate}
+  \item Zu gegebenem $v \in T_pM$ gibt es eine Geodätische $c$ mit $c'(0)=v$.
+    (Insbesondere ist $c(o)$ der Fußpunkt von $v$). Falls $c_1: I_1 \to M, c_2:
+    I_2\to M$ mit $t_0 \in I_1\cup I_2$ mit $c_1'(t_0)=c_2'(t_0)$, dann ist
+    $c_1=c_2$ auf $I_1\cup I_2$. Damit gibt es eindeutige und maximale Geodätische
+    $c_0:I\to M$ mit $0\in I$ und $c_0'(0)=v$.
+  \item Falls $c: I \to N$ Geodätische, so ist auch $\tilde{c}=c(at+b)$, 
+    $\mdef[t\in\R]{at+b\in I}$ eine.
+\end{enumerate}
 \end{document}
