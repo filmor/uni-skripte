@@ -6,7 +6,7 @@
 \RequirePackage[cmtip,arrow]{xy}
 \RequirePackage{amsmath, amsthm, amssymb, ifthen, pb-diagram, pb-xy}
 \RequirePackage[ngerman]{babel}
-\RequirePackage[utf8]{inputenc}
+\RequirePackage[utf8x]{inputenc}
 
 \DeclareMathSymbol{,}{\mathpunct}{letters}{"3B}
 \DeclareMathSymbol{.}{\mathord}{letters}{"3B}
@@ -26,6 +26,7 @@
 \newtheorem{axm}[dfn]{Axiom}
 \newtheorem{lem}[dfn]{Lemma}
 \newtheorem{krl}[dfn]{Korollar}
+\newtheorem{prp}[dfn]{Proposition}
 
 \theoremstyle{remark}
 \newtheorem*{bem}{Bemerkung}
@@ -63,7 +64,7 @@
 
 \newcommand{\id}{\ensuremath{\operatorname{id}}}
 \newcommand{\im}{\ensuremath{\operatorname{im}}}
-\newcommand{\T}{\ensuremath{\top}}
+\newcommand{\tr}{\ensuremath{\operatorname{tr}}}
 
 \makeindex
 

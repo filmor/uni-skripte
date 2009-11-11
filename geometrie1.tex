@@ -565,7 +565,7 @@ Die $\Gamma_{ij}^k:U\to\R$ sind glatt. Betrachte
 \end{align*}, wobei $\sprod[p]{\cdot,\cdot}$ die erste Fundamentalform von $f$
 ist. Dies ist gleich dem gewöhnlichen Skalarprodukt
 \begin{align*}
-  \sprod{\Gamma^k_{ij}f_k, f_l} &= \sprod{f_{ij}^\T, f_l} \\
+  \sprod{\Gamma^k_{ij}f_k, f_l} &= \sprod{f_{ij}^\top, f_l} \\
   &= \sprod{f_{ij}, f_{l}}
 \end{align*}, wobei $f_i(p) := \frac{\partial f}{\partial x^i}(p) = \d f(p)\cdot
 \frac{\partial}{\partial x^u}\vert_p \in \R^n$ gilt.
@@ -604,10 +604,10 @@ Allgemeinen nicht mehr tangential längs $f$.
 
 Wir zerlegen nun
 \begin{align*}
-  X(\d f\cdot Y) = \left( X(\d f\cdot Y) \right)^\T + \left( X(\d f \cdot Y)
+  X(\d f\cdot Y) = \left( X(\d f\cdot Y) \right)^\top + \left( X(\d f \cdot Y)
   \right)^\perp
 \end{align*}
-also $\left( X_p(\d f\cdot Y) \right)^\T, \left( X_p(\d f\cdot Y)
+also $\left( X_p(\d f\cdot Y) \right)^\top, \left( X_p(\d f\cdot Y)
 \right)^\perp\in N_pf$.
 
 Über $U$ wie oben schreibe $X = \xi^i\frac{\partial}{\partial x^i}$ und $Y =
@@ -720,4 +720,140 @@ und
   \d f(\nabla_YX) \right) \\
   &= \d f\left( \left[ X,Y \right] - \nabla_XY + \nabla_YX \right) = 0
 \end{align*}
+
+\section{Untermannigfaltigkeiten in $\R^N$: Diskussion einiger Beispiele}
+\subsection{Die Lie-Gruppen $SO(n)$ und $SU(n)$}
+Auf dem Vektorraum $\R^{n\times n}$ bzw.\ $\C^{n\times n}$ definieren wir das
+Skalarprodukt
+\begin{align*}
+  \sprod{X, Y} := \operatorname{tr}(X^*Y) \text{ für } X,Y\in\R^{n\times n}
+  \text{ bzw.\ } \C^{n\times n}
+\end{align*}
+oder auch ausführlicher
+\begin{align*}
+  \sprod{X,Y} := \sum^n_{i,j=1} \bar{X}_{ij}Y_{ij}
+\end{align*}
+
+\subsubsection*{Zur Erinnerung}
+\begin{align*}
+  SO(n) &= \mdef[g\in\R^{n\times n}]{gg^*=1, \det g = 1 } \subset \R^{n\times n}
+  \\
+  SU(n) &= \mdef[g\in\C^{n\times n}]{gg^*=1, \det g = 1 } \subset \C^{n\times n}
+\end{align*}
+Beides sind Untermannigfaltigkeiten von $\R^{n\times n}$ bzw.\ $\C^{n\times n}$.
+
+Es ist
+\begin{align*}
+  \d f_g(gX = g(X + X^*)g^*
+\end{align*}
+
+Wähle einen Weg $\gamma:\R \to \R^{n\times n}$ mit $\gamma(0) = g$, $\dot
+\gamma(0) = gX$, z.~B.\ $\gamma(t) = g\exp(tX)$.
+
+Dann ist
+\begin{align*}
+  \frac{\d}{\d t}\vert_{t=0}f(\gamma(t)) &= \frac{\d}{\d t}\vert_{t=0}\left(
+  g\exp(tX)\exp(tX^*)g^* - 1 \right) \\
+  &= gXg^* + gX^*g^* \\
+  &= g(X + X^*)g^*
+\end{align*}
+
+Aufgrund der Definition des Skalarprodukts ist die erste Fundamentalform auf $G
+= SO(n)$ bzw.\ $G = SU(n)$ gegeben durch
+\begin{align*}
+  I(gX, gY) &= \tr\left( (gX)^*gY \right) = \tr\left( X^*g^*gY \right) \\
+            &= \tr(X^*Y) & \text{Killing-Form}
+\end{align*}
+für $X,Y \in T_1G$.
+
+\begin{lem}
+  Sei $g_0\in G$, $X\in T_1G$. Die (eindeutig bestimmte) Geodäte $g:\R\to G$ mit
+  $g(0) = g_0$ und $\dot g(0) = gX$ ist gegeben durch
+  \begin{align*}
+    g(t) = g_0\exp(tX), \quad t\in\R
+  \end{align*}
+
+  \begin{proof}
+    Berechne
+    \begin{align*}
+      \dot g(t) &= g_0\exp(tX) X = g(t)\cdot X, \\
+      \ddot g(t) &= g(t)\cdot X^2
+    \end{align*}
+    Es folgt für beliebiges $t\in\R$ und $g(t)Y \in T_{g(t)}G$:
+    \begin{align*}
+      \sprod{g(t)Y, g(t)X^2} = \tr(Y^*X^2) = 0
+    \end{align*}
+    Damit folgt aus dem Kriterium von Bernoulli, dass $g$ eine Geodäte ist.
+  \end{proof}
+\end{lem}
+
+\newcommand{\zwei}{\ensuremath{\mathrm{I\!I}}}
+\begin{prp}
+  Sei $M\subset\R^N$ eine Untermannigfaltigkeit und $c:I\to M$ eine Geodäte.
+  Dann gilt
+  \begin{align*}
+    \zwei(\dot c(t), \dot c(t)) = \ddot c(t) \text{ für } t\in I
+  \end{align*}
+  \begin{proof}
+    \begin{align*}
+      \ddot c(t) &= \ddot c(t)^\top + \ddot c(t)^\perp \\
+      &= \nabla_{\dot c}\dot c(t) + \zwei(\dot c(t), \dot c(t))
+      \Rightarrow \ddot c(t) &= \zwei(\dot c(t), \dot c(t))
+    \end{align*}
+    Der erste Term der Summe (die tangentiale Komponente) wird $0$, da $c$ eine
+    Geodäte ist.
+
+    Weil \zwei symmetrisch ist gilt:
+    \begin{align*}
+      \zwei(X,Y) &= \zwei(X+Y-Y, X+Y-X) \\
+                 &= \zwei(X+Y,X+Y) + \zwei(X+Y, -X) + \zwei(-Y,X+Y) +
+                 \zwei(-Y,-X)
+    \end{align*}
+  \end{proof}
+\end{prp}
+
+\subsubsection*{Zurück zur Lie-Gruppe}
+Sei $g(t) = g_0\exp(tX)$, $t\in\R$ eine Geodätische in $G$ wie oben. Dann gilt
+nach der Proposition $\zwei(\dot g(0), \dot g(0)) = \zwei(g_0X,g_0X) = g_0X^2)$,
+also (nach Polarisierung) $\zwei(g_0X,g_0Y) = \frac{1}{2}g_0(XY+YX)$ für
+$X,Y\in T_1G$.
+
+\subsection{Graßmann-Mannigfaltigkeiten}
+Sei $(V,\sprod{\cdot,\cdot})$ ein endlichdimensionaler \R- oder \C-Vektorraum
+mit Skalarprodukt. Es bezeichne $G_k(V)$, $k = 0,\ldots,\dim V$,  die Menge der
+$k$-dimensionalen Unterräume von $V$.
+
+Auf $G_k(V)$ definieren wir einen differenzierbaren Atlas wie folgt:
+
+Sei $X\in G_k(V)$, $Y\subset V$ ein direktes Komplement von $X$ (z.~B.\
+$Y=X^\perp$), also $V = X \oplus Y$. Ferner sei
+\begin{align*}
+  U_Y := \mdef[Z\in G_k(V)]{Z \cap Y = \mdef{0}}
+\end{align*}
+sowie
+\begin{align*}
+  f_Y : U_y \to \operatorname{Hom}(X, Y), \quad Z\mapsto \operatorname{pr}_Y(Z)
+  \in \operatorname{End}(V)
+\end{align*}
+Dabei ist $\operatorname{pr}_Y(Z)$ die Projektion auf $Z$ längs $Y$.
+% Matrix bezüglich der Basis x1, \ldots, xn, y1, \ldots, ym
+
+Nach Konstruktion sind $G_k(V)$ von Mengen der Form $U_Y =
+f_Y^{-1}(\mathbb{K}^{(n-k)\times k})$. Diese bilden zusammen mit den $f_Y$
+einen differenzierbaren Atlas (wobei noch zu zeigen wäre, dass $f_{Y_2}\circ
+f_{Y_1}^{-1}$ glatt ist).
+
+$G_k(V)$ mit der so definierten differenzierbaren Struktur heißt
+\emph{Graßmann-Mannigfaltigkeit} der $k$-dimensionalen Unterräume in $V$.
+
+\begin{bem}
+  Sei $V=\R^n$. Die Gruppe $G = O(n)$ wirkt auf $G_k(V)$ durch
+  \begin{align*}
+    gX = \mdef[gv]{v\in X}
+  \end{align*}.
+  Die Wirkung ist transitiv (\emph{Übungsaufgabe}). Der Stabilisator von
+  $X=\operatorname{span}(e_1,\ldots,e_k)$ ist die Gruppe $O(k)\times O(n-k)
+  \subset O(N)$.
+\end{bem}<++>
+
 \end{document}
