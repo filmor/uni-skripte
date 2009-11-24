@@ -47,7 +47,7 @@
 }
 
 \newcommand{\sprod}[2][\empty]{
-    \ensuremath{\langle #2 \rangle}
+    \ensuremath{\left\langle #2 \right\rangle}
     \ifthenelse{\equal{ #1 }{\empty}}{}{\ensuremath{_{#1}}}
 }
 

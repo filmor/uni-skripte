@@ -854,6 +854,118 @@ $G_k(V)$ mit der so definierten differenzierbaren Struktur heißt
   Die Wirkung ist transitiv (\emph{Übungsaufgabe}). Der Stabilisator von
   $X=\operatorname{span}(e_1,\ldots,e_k)$ ist die Gruppe $O(k)\times O(n-k)
   \subset O(N)$.
-\end{bem}<++>
+\end{bem}
 
+\section{Wiederholung}
+
+Sei $f:M\to\R^n$ eine Immersion.
+
+\subsection{Erste Fundamentalform}
+Für $v,w\in T_pM$ ist
+\begin{align*}
+  \sprod[p]{v,w} = \sprod{\d f(p)\cdot v, \d f(p)\cdot w}
+\end{align*}
+Ist $x:U\to U' \subset \R^n$ Karte von $M$, $U\ni p$
+\begin{align*}
+  g_{ij}(p) = \sprod[p]{\frac{\partial}{\partial x^i}\Big|_p,
+  \frac{\partial}{\partial x^j}\Big|_p} = \sprod{\frac{\partial f}{\partial
+  x^i}(p), \frac{\partial f}{\partial x^j}(p)}
+\end{align*}
+
+\subsection{Erste Variation der Bogenlänge}
+\subsection{Geodätische}
+Bernoulli-Kriterium: $(f\circ c)'')$ ist normal zu $f$.
+Christoffelsymbole (bezüglich Karte $x$, geodätische Differentialgleichung:
+\begin{align*}
+  (c^k)'' + \Gamma^k_{ij}(c^i)'(c')' = 0
+\end{align*}
+
+\subsection{Zweite Fundamentalform}
+$X,Y$ Vektorfelder auf $M$,
+\begin{align*}
+  \d(\d f\cdot Y)X &= XYf = \left( XYf \right)^T + \left( XYf \right)^N \\
+  &= \d f\left( \nabla_XY \right) + S(X,Y)
+\end{align*}
+Dabei ist $S(X,Y)$ die zweite Fundamentalform.
+
+Sei $\pi:\R^n \to \R^n$ die orthogonale Projektion auf $T_pf$, dann ist
+$\pi\circ\d f(p): T_pM \to T_pf$ ein Isomorphismus.
+
+\subsubsection{Umkehrsatz}
+$\exists$ eine offene Umgebung $U$ um $p$ in $M$ und $U'$ um $O$ in $T_pf$
+($\cong\R^m$) so, dass $x=\pi\circ(f - f(p)) : U\to U'$ ein Diffeomorphismus
+ist, also ist $x$ eine Karte von $M$ um $P$ mit $x(p) = 0$. Dann ist $\left(
+(f - f(p)) \circ x^{-1} \right)(u) = u + h(u)$, $u\in U'$ mit $h:U' \to N_pf$,
+$h(0) = 0$, $\d h(0) = 0$.
+
+\subsubsection{Taylorentwicklung von $h$ um $0\in U'$}
+\begin{align*}
+  h(u) = \frac{1}{2}\d^2h(0)(u,u) + \text{Terme der Ordnung} \geq 3
+\end{align*}
+
+Über $U$ ist
+\begin{align*}
+  \left( XY(f-f(p)) \right)^N_p &= \left( XY(((f-f(p))\circ x^{-1})\circ x)^N_p
+  \right) \\
+  &= \left( XY( (\id + h)\circ x) \right)^N_p \\
+  &= (XY(h\circ x))_p = X_p\left( \d h(\d x\cdot Y) \right) \\
+  &= \d^2h(0)\left(\d x_p\cdot X_p, \d x_p\cdot Y_p  \right)
+\end{align*}
+Damit kann man sehen, dass die Mannigfaltigkeit $M$ der Graph der zweiten
+Fundamentalform ist (der letzte Ausdruck).
+
+\subsection{Wichtige Beispiele}
+\begin{enumerate}
+  \item Reguläre Kurven in $\R^n$
+  \item Drehflächen
+  \item Liesche Gruppe $Sl(n,\R)$, $O(n)$, $SO(n)$, $U(n)$, $SU(n)$
+  \item Graßmannsche Mannigfaltigkeiten $G_{k,n}(\R)$, $G_{k,n}(\C)$,
+    $f:G_{k,n}(\mathbb K) \to \mathbb K^{n\times n}$, $\mathbb K = \R,\C,\mathbb
+    H$.
+    Dabei ist $G_{1,n}(\mathbb K) = \mathbb K P^{n-1}$
+\end{enumerate}
+
+\section{Riemannsche Mannigfaltigkeiten}
+Die erste Fundamentalform über $U$ ist:
+\begin{align*}
+  g(X, Y) &= \sprod{X,Y} = \sprod{\xi^i\frac{\partial}{\partial
+  x^i},\eta^j\frac{\partial}{\partial x^j}} \\
+  &= g_{ij}\xi^i\eta^j = g_{ij}\d x^i(X)\d x^j(Y) \\
+  &= (g_{ij}\d x^i\d x^j)(X,Y) = (g_{ij}\d x^i \otimes \d x^j)(X,Y)
+\end{align*}
+
+Für die euklidische Metrik auf $R^m = \mdef[(x^1,\ldots,x^m)]{x^i\in \R}$ gilt:
+\begin{align*}
+  g = \d x^1 \d x^1 + \cdots + \d x^m\d x^m
+\end{align*}
+also $g_{ij} = \delta_{ij}$.
+
+Beim Minkowskiraum dagegen ist $g_{ij} = \eta_{ij} =
+\delta_{0i}\delta_{0j} + \delta_{1i}\delta_{1j}$, die zugehörige Orthogonale
+Gruppe $O(3,1) = \Lambda$ heißt \emph{Lorentzgruppe}.
+
+\subsubsection{Semi-Riemannsche Metriken}
+\begin{dfn}
+  Sei $M$ eine Mannigfaltigkeit der Dimension $m$. Eine Familie symmetrischer
+  Bilinearformen
+  \begin{align*}
+    g_p : T_pM\times T_pM\to \R, & p\in M
+  \end{align*}
+  heißt \emph{semi-riemannsche Metrik} auf $M$, falls gelten:
+  \begin{enumerate}
+    \item $g_p$ ist nicht ausgeartet $\forall p\in M$
+    \item (Regularität)\\
+      $\forall$ glatten Vektorfelder $X,Y$ auf $M$ ist $g(X,Y)$ glatt. \\
+      $\Equiv$\\
+      Für alle Karten $(x,U)$ von $M$ sind die $g_{ij}:U\to \R$,
+      $g_{ij}(p) = g(p)\left( \frac{\partial}{\partial x^i}(p),
+      \frac{\partial}{\partial x^j}(p) \right)$ glatt
+  \end{enumerate}
+  Man schreibt: $g(X,Y) =: \sprod{X,Y}$
+\end{dfn}
+\begin{bsps}
+  \begin{enumerate}
+    \item Seien $k,l\geq 0$ mit $k+l=m$. Betrachte $\R^m$ mit 
+  \end{enumerate}
+\end{bsps}
 \end{document}
