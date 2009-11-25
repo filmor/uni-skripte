@@ -56,6 +56,14 @@
     \ifthenelse{\equal{ #1 }{\empty}}{}{\ensuremath{_{#1}}}
 }
 
+\newcommand{\dd}[2]{
+  \ensuremath{\frac{\partial #2}{\partial #1}}
+}
+
+\newcommand{\del}[2][\empty]{
+  \ifthenelse{\equal{ #1 }{\empty}}{\dd{x^{#2}}{}}{\dd{x^{#2}}{#1}}
+}
+
 \newcommand{\potmenge}[1]{\mathcal{P}(#1)}
 
 \newcommand{\supnorm}[1]{\norm[\infty]{#1}}

@@ -925,6 +925,34 @@ Fundamentalform ist (der letzte Ausdruck).
     Dabei ist $G_{1,n}(\mathbb K) = \mathbb K P^{n-1}$
 \end{enumerate}
 
+
+\subsection{Nachtrag zur zweiten Fundamentalform}
+Seien $n=3$, $m=2$, die Mannigfaltigkeiten also Flächen in $\R^3$.
+% Bild: N_pf auf der y-Achse, T_pf auf der y-Achse, Parabel, Fläche darunter
+% schraffiert, y-Achsenabschnitt markiert
+
+Lokal um $0$ ist die Fläche gegeben durch $u + h(u)$, $u\in T_pf$, $h(u)\in
+N_pf$. Die zweite Ableitung von $h$ in $0$ entspricht genau der zweiten
+Fundamentalform von $f$ in $p$. Wegen $m = n - 1$ gibt es bis auf Vorzeichen
+genau einen Einheitsvektor $n_p \in N_pf$. Wir erhalten die \R-wertige
+symmetrische Bilinearform
+\begin{align*}
+  S_p^{n_p}(v,w) := \sprod{S_p(v,w), n_p}
+\end{align*}
+Die Eigenwerte dieser symmetrischen Bilinearform heißen \emph{Hauptkrümmungen}
+zu $f$ in $p$, die entsprechenden Eigenräume bzw.\ Geraden in diesen heißen
+\emph{Hauptkrümmungsrichtungen}:
+\begin{align*}
+  S_p^{n_p}\left(\del{i}\Big|_p, \del{j}\Big|_p\right) = h_{ij}(p)
+\end{align*}
+
+Die zweite Hauptkrümmung ist der Größere der beiden Eigenwerte $\kappa_1 \le
+\kappa_2$. Die mittlere Krümmung ist definiert als $H = \frac12(\kappa_1 +
+\kappa_2)$, die Gaußsche Krümmung als $K = \kappa_1\kappa_2$. $H$ hängt von der
+Wahl von $n_p$ ab, $K$ nicht!
+
+% Theorema egregium, elegantissimum
+
 \section{Riemannsche Mannigfaltigkeiten}
 Die erste Fundamentalform über $U$ ist:
 \begin{align*}
@@ -966,6 +994,127 @@ Gruppe $O(3,1) = \Lambda$ heißt \emph{Lorentzgruppe}.
 \begin{bsps}
   \begin{enumerate}
     \item Seien $k,l\geq 0$ mit $k+l=m$. Betrachte $\R^m$ mit 
+    \item[1'\!\!.] Sei $V$ ein $m$-dimensionaler reeller Vektorraum und
+      $\sprod{\cdot,\cdot}$ eine nichtausgeartete symmetrische Bilinearform auf
+      $V$. Identifiziere $T_pV$, $p\in V$ mit $V$ wie üblich. Für $v,w \in V
+      \cong T_pV$ ist $g_p(v,w) = \sprod{v,w}$.
+
+      Kanonische Karten für $V$: \\
+      Wähle Basis $B=(b_1, \ldots, b_m)$ von $V$ und definiere $x_B(p) = u =
+      (u^1, \ldots, u^m)$, wobei $p = u^ib_i$. Bezüglich dieser Karte ist
+      \begin{align*}
+        g_p\left( \del{i}\Big|_p, \del{j}\Big|_p \right) &= g_p(b_i, b_j) =
+        \sprod{b_i, b_j} \\ &= g_{ij}(p) = \text{const}
+      \end{align*}
+    \item (Riemann, 1854) Mit $V$ und dem Skalarprodukt wie oben betrachte
+      \begin{align*}
+        g_p = \frac{4}{(1+\kappa\sprod{p,p})^2}\sprod{\cdot, \cdot}
+      \end{align*}
+      wobei $\kappa\in\R\setminus\mdef{0}$ eine feste Konstante ist. Für
+      $v,w\in T_pV\cong V$ ist
+      \begin{align*}
+        g_p(v,w) = \frac{4\sprod{v,w}}{(1+\kappa\sprod{p,p}^2}
+      \end{align*}
+
+      Der Spezialfall $m=2$, $\kappa = -1$, $\sprod{\cdot,\cdot}$ euklidisches
+      Skalarprodukt heißt \emph{Poincar\'esche Kreisscheibe}.
+
+    \item Mit $V$ und $\sprod{\cdot,\cdot}$ wie oben und
+      $\alpha\in\R\setminus\mdef{0}$ sei
+      \begin{align*}
+        Q_\alpha = \mdef[p\in V]{\sprod{p,p} = \alpha}
+      \end{align*}
+      Betrachte $f:V\to\R$, $f(p) = \sprod{p,p}$. Dann ist $\d f(p)\cdot v =
+      2\sprod{p,v}$. Also hat $\d f(p)$ in allen $p\in Q_\alpha$ maximal Rang 1,
+      denn $\d f(p)p = 2\sprod{p,p} = 2\alpha \ne 0$. Daher ist $Q_\alpha$ eine
+      Untermannigfaltigkeit von $V$ der Dimension $\operatorname{dim}V - 1$. Als
+      semi-riemannsche Metrik auf $Q_\alpha$ wählen wir die erste
+      Fundamentalform:
+
+      Für $v,w\in T_pQ_\alpha \subset V$:
+      \begin{align*}
+        g_p(v,w) = \sprod{v,w}
+      \end{align*}
+      Hier ist $T_pQ_\alpha = \operatorname{ker} \d f = p^\perp$, $N_pQ_\alpha =
+      \R p$. Weil $\sprod{p,p} = \alpha \ne 0$ ist $p^\perp \subset V$ nicht
+      ausgeartet.
+
+      Also ist $(g_p)_{p\in Q_\alpha}$ eine semi-riemannsche Metrik auf
+      $Q_\alpha$.
+
+      Spezialfälle:
+      \begin{enumerate}
+        \item $\sprod{\cdot, \cdot}$ positiv definit, $\alpha = r^2 > 0$. In
+          diesem Fall ist $Q_\alpha = S_r^{\operatorname{dim} V - 1}$.
+        \item $V=\R^{1,m-1}$ -- Minkowskiraum der Dimension $m$, $\alpha = -1$:
+
+          (reeller) hyperbolischer Raum der Dimension $m-1$. Die erste
+          Fundamentalform ist sogar \emph{riemannsch}.
+      \end{enumerate}
   \end{enumerate}
 \end{bsps}
+
+\begin{dfn}
+  Seien $M$, $N$ semi-riemannsche Mannigfaltigkeiten, $f:M\to N$ glatt. Dann
+  nennen wir $f$ \emph{isometrisch} und $f$ eine \emph{lokale Isometrie}, falls
+  $\d f(p) : T_pM\to T_{f(p)}N$ für alle $p\in M$ ein Isomorphismus ist, der die
+  gegebenen semi-riemannschen Metriken erhält:
+  \begin{align*}
+    \forall p\in M,\ v,w\in T_pM: \\
+    \sprod{\d f(p)v, \d f(p)w} = \sprod{v,w}
+  \end{align*}
+  Dabei ist das eine Skalarprodukt in $T_{f(p)}N$, das andere in $T_pM$.
+
+  \begin{bem}
+    Dann ist $\dim M = \dim N$ und $f$ ein lokaler Diffeomorphismus. Falls $f$
+    ein Diffeomorphismus ist, dann nennen wir $f$ eine \emph{Isometrie}.
+  \end{bem}
+
+  \begin{bsps}
+    \begin{enumerate}
+      \item[1'\!\!.] Sei $A\in O(\sprod{\cdot, \cdot}$, $b\in V$, $f: V\to V$,
+        $f(p) = Ap + b$. Dann ist $f$ eine Isometrie, denn $A$ ist invertierbar,
+        also ist $f$ ein Diffeomorphismus. Ferner ist $\d f(p)v = Av$, $p\in V$,
+        $v\in T_pV \cong V$. Damit ist 
+        \begin{align*}
+          g_{f(p)}\left( \d f(p)v, \d f(p)w \right) &= \sprod{Av, Aw} \\
+          &= \sprod{v,w} = g_p(v,w)
+        \end{align*}
+      \item[3+4.]$Q_\alpha = \mdef[p\in V]{\sprod{p,p} = \alpha}$. Wähle $p_0\in
+        Q_\alpha$, $p_0^\perp =: W$, also $V=\R p_0\oplus W$. Schreibe $p = xp_0
+        + q$ und betrachte $U_0 = \mdef[p\in V]{x(p) \ne 1}$, $f:U_0\to W$,
+        $f(p) = \frac{q}{1-x}$. Dabei ist $x\in \R$, $q\in W$.
+
+        Dann gilt für $p\in U_0$, $v\in T_pV =  T_pU_0 \cong V$, $v = \xi p_0 +
+        w$:
+        \begin{align*}
+          \d f(p)(\xi p_0 + w) &= \d f(p)(\xi p_0) + \d f(p)(w) \\
+          &= \frac{\xi}{(1-x)^2}q + \frac{1}{1-x}w
+        \end{align*}
+        Für $p\in Q_\alpha \cap U_0$ ist $\sprod{p,p} = \sprod{xp_0 + q, xp_0 +
+        q} = x^2\alpha + \sprod{q,q}$.
+
+        Sei nun $v\in T_pQ_\alpha = p^\perp$:
+        \begin{align*}
+          0 = \sprod{p,v} &= \sprod{xp_0 + q, \xi p_0, w} \\
+          &= \sprod{q,w} = -x \xi \alpha
+        \end{align*}
+
+        Also folgt:
+        \begin{align*}
+          \sprod{\d f(p)v_1, \d f(p)v_w} = \frac{1}{(1-x)^2}\sprod{v_1, v_2}
+        \end{align*}
+        Im Beispiel von Riemann (auf $W$ mit $\sprod{\cdot,\cdot}$) mit $\kappa
+        = \frac1\alpha$ ist
+        \begin{align*}
+          \frac{2}{1+ \sprod{f(p), f(p)}} = 1- x
+        \end{align*}
+        Also ist $f: U_0\cap Q_\alpha\to\mdef[y\in
+        W]{\frac{1}{\alpha}\sprod{y,y} \ne -1}$ mit dem riemannschen Beispiel
+        eine Isometrie.
+    \end{enumerate}
+  \end{bsps}
+\end{dfn}
+
+
 \end{document}
