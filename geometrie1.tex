@@ -1116,5 +1116,75 @@ Gruppe $O(3,1) = \Lambda$ heißt \emph{Lorentzgruppe}.
   \end{bsps}
 \end{dfn}
 
+\begin{stz}
+  Sei $\dim M = \dim N$, $f: M\to N$ glatt. Dann ist $f$ eine lokale Isometrie
+  genau dann, wenn es zu allen $p\in M$ Koordinaten $(x, U)$ um $p$ und $(y, V)$
+  um $f(p)$ gibt, so dass $f:U\to V$ ein Diffeomorphismus ist mit
+  \begin{align*}
+    f_*\left(\del{i}\right) &= \dd{y^i}{} \\
+    \sprod{\dd{y^i}{},\dd{y^j}{}}\circ f &= \sprod{\del{i}, \del{j}}
+  \end{align*}
+
+  \begin{proof}
+    \begin{description}
+      \item[$\Rightarrow$]Da $f$ lokale Isometrie ist, hat $f_{*p}$ maximalen
+        Rang, ist also ein Iso $T_pM\overset{f_{*p}}{\to}T_{f(p)}N$. Nach dem Umkehrsatz
+        gibt es daher Umgebungen $U_0$ um $p$ in $M$ und $V_{0}$ um $f(p)$ in
+        $N$, so dass $f:U_0\to V_0$ ein Diffeomorphismus ist. Wähle Koordinate
+        $(V,y)$ um $f(p)$ mit $V\subset V_0$. Dann ist $f:U:=U_0\cap
+        f^{-1}(V)\to V$ ein Diffeomorphismus und damit ist $(U,x := y\circ
+        f\vert_U)$ eine Karte von $M$ um $p$ mit $y\circ f\circ x^{-1} = y\circ
+        f\circ \left( f\vert_U \right)^{-1}\circ y^{-1} = \id$.
+
+        Damit folgt sofort, dass $f_*\left( \del{i} \right) = \dd{y^i}{}$. Die
+        zweite Gleichung folgt sofort, weil $f$ lokale Isometrie ist.
+      \item[$\Leftarrow$]trivial
+    \end{description}
+  \end{proof}
+\end{stz}
+
+\subsection{Dualität zwischen 1-Formen und Vektorfeldern auf Semi-riemannschen
+Mannigfaltigkeiten}
+Sei $M$ semi-riem., $p\in M$, $v\in T_pM$. Erkläre $v\flat\in T_p^*M$ durch
+\begin{align*}
+  v^\flat(w) := \sprod{v,w}
+\end{align*}
+Falls $(x,U)$ eine Karte um $p$ ist und $g_{ij} = \sprod{\del{i},\del{j}}$ sowie
+$(g^{ij}) = (g_{ij})^{-1}$ und damit $g^{ij}g_{jk} = \delta_k^i$, dann können
+wir schreiben
+\begin{align*}
+  v = v^i\del{i}\Big|_p
+\end{align*}
+und erhalten $g^\flat = g_{ij}(p)v^j$.
+
+Zum Beweis hiervon rechnen wir:
+\begin{align*}
+  v^\flat\left( \del{j}\Big|_p \right) &= \sprod{v,\del{j}\Big|_p} \\
+  &= \sprod{v^i\del{i}\Big|_p, \del{j}\Big|_p} = v^ig_{ij}(p) \\
+  &= g_{jk}(p)v^k\d x^i(p)\left( \del{j}\Big|_p \right)
+\end{align*}
+
+Damit erhalten wir den Isomorphismus $T_pM\to T_p^*M$, $v\mapsto v^\flat$. Die
+Matrix dieser Abbildung bezüglich der gegebenen Basis ist $\left( g_{ij}(p)
+\right)$. Damit ist die Matrix des inversen Isomorphismus gegeben durch $\left(
+g^{ij}(p) \right)$. Der inverse Isomorphismus wird auch geschrieben als
+$T_p^*M\ni \phi \mapsto \phi^\sharp\in T_pM$. Wenn $\phi = \phi_i\d x^i(p)$,
+dann ist $\phi^\sharp= g^{ij}(p)\phi_j\del{i}\Big|_p$. Damit können wir
+Vektorfeldern 1-Formen zuordnen und umgekehrt.
+
+\begin{stz}[Levi-Civita-Zusammenhang]
+  Sei $M$ eine semi-riemannsche Mannigfaltigkeit. Dann gibt es genau einen
+  Zusammenhang (bzw.\ eine kovariante Ableitung) $\nabla$ auf $M$ mit den
+  folgenden Eigenschaften:
+  \begin{enumerate}
+    \item $X\sprod{Y,Z} = \sprod{\nabla_XY,Z} + \sprod{Y,\nabla_XZ}$
+      (Riemannsch/metrisch)
+    \item $\nabla_XY-\nabla_YX = [X,Y]$ (symmetrisch)
+  \end{enumerate}
+  Diesen Zusammenhang nennen wir den \emph{Levi-Civita-Zusammenhang} von $M$.
+  \begin{proof}
+    
+  \end{proof}
+\end{stz}
 
 \end{document}
