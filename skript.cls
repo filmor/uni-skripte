@@ -26,6 +26,7 @@
 \newtheorem{axm}[dfn]{Axiom}
 \newtheorem{lem}[dfn]{Lemma}
 \newtheorem{krl}[dfn]{Korollar}
+\newtheorem{flg}[dfn]{Folgerung}
 \newtheorem{prp}[dfn]{Proposition}
 
 \theoremstyle{remark}

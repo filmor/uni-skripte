@@ -1187,4 +1187,104 @@ Vektorfeldern 1-Formen zuordnen und umgekehrt.
   \end{proof}
 \end{stz}
 
+
+% -----------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Zusammenhänge}
+
+\subsection{Levi-Civita-Zusammenhang}
+
+\section{}
+"`\emph{Natürliche}, zu einer semi-riemannschen Metrik assoziierte Objekte sollten
+unter (lokalen) Isometrien zueinander korrespondieren"'.
+
+Sei $f:M\to N$ eine lokale Isometrie, das heißt $\dim M = \dim N$ und $\forall
+p\in M,\ v,w\in T_pM$ ist $\sprod{f_{*p}v, f_{*p}} = \sprod{v,w}$.
+
+Seien $X,Y$ Vektorfelder auf $M$ und sei $U\subset M$ offen, so dass $f:U\to
+f(U) =: V \subset N$ ein Diffeomorphismus ist.
+
+Definiere Vektorfelder $\tilde X, \tilde Y$ auf $V$ durch $\tilde X\left( f(p)
+\right) := f_{*p}X(p), p\in U$. Dann sind $\tilde X, \tilde Y$ glatt und es gilt
+\begin{align*}
+  \left( \nabla_{\tilde X}^N\tilde Y \right)(f(p)) = f_{*p}\left(  \left(
+  \nabla_XY \right)(p) \right), & \forall p\in U
+\end{align*}
+
+\begin{proof}
+  Sei $V'\subset V$ Kartenbereich einer Karte $y$ von $N$. Sei $U' =
+  f^{-1}(V')\cap U$, also ist $f:U'\to V'$ ein Diffeomorphismus und $x = y\circ
+  f$ ist eine Karte für $M$ mit Kartenbereich $U'$. Bezüglich dieser Karten ist
+  $y\circ f \circ x = \id$ auf $V''$, also
+  \begin{align*}
+    f_{*p}\left( \del{i}\Big|_p \right) = \dd{y^i}{}\Big|_{f(p)} \\
+    \forall p\in U', 1\le i,j \le m
+  \end{align*}
+
+  \begin{align*}
+    \sprod{f_{*p}\left( \del{i}\Big|_p \right), f_{*p}\left(
+    \del{j}\Big|_p \right)} &= \sprod{\dd{y^i}{}\Big|_{f(p)},
+    \dd{y^j}{}\Big|_{f(p)}} =:\tilde g_{ij\left( f(p) \right)} \\
+    &= \sprod{\del{i}\Big|_p, \del{j}\Big|_p} = g_{ij(p)}
+  \end{align*}
+  Das heißt es gilt $\tilde g_{ij} \circ f = g_{ij}$.
+
+  Über $U'$ seien nun $X=\xi^i\del{i}$, $Y=\eta^i\del{i}$. Dann ist
+  $f_{*p}\left( X(p) \right) = \xi^i(p)f_{*p}\left( \del{i}\Big|_p \right) =
+  \xi^i(p)\dd{y^i}{}\Big|_{f(p)}$, das heißt $\tilde X(f(p)) =
+  \xi^i(p)\dd{y^i}{}\Big|_{f(p)}$ bzw.\ $\tilde X = \left( \xi^i\circ
+  f^{-1} \right)\dd{y^i}{}$ und analog $\tilde Y = \left( \eta^i\circ
+  f^{-1} \right)\dd{y^i}{}$.
+
+  Es soll gelten:
+  \begin{align*}
+    \nabla_{\dd{y^i}{}}^N\dd{y^j}{} &= \tilde \Gamma_{ij}^k \dd{y^k}{} &\text{ mit
+    } \tilde\Gamma^k_{ij} = \frac{1}{2}\tilde g^{kl}(\tilde g_{il,j} + \tilde
+    g_{jl,i} - \tilde g_{ij,l}) \\
+    \nabla_{\dd{x^i}{}}^M\dd{x^j}{} &= \Gamma_{ij}^k \dd{x^k}{} &\text{ mit
+    } \Gamma^k_{ij} = \frac{1}{2}g^{kl}(g_{il,j} + g_{jl,i} - g_{ij,l})
+  \end{align*}
+
+  Wir zeigen zunächst, dass $\Gamma^k_{ij} = \tilde \Gamma^k_{ij}\circ f$ gilt.
+  Wir wissen schon, dass $g_{ij} = \tilde g_{ij}\circ f$ ist, also auch, dass
+  $g^{ij} = \tilde g^{ij} \circ f$. Damit folgt
+  \begin{align*}
+    g_{ij,k} &= \dd{x^k}{g_{ij}} = \dd{x^k}{(\tilde g_{ij}\circ f)} \\
+    &= \left( f_{*}\left( \del{k} \right) \right)(\tilde g_{ij}) = \tilde
+    g_{ij,k}
+  \end{align*}.
+
+  Damit folgt $\Gamma_{ij}^k = \tilde\Gamma_{ij}^k\circ f$, also
+  \begin{align*}
+%    f_{*p}\left( \left( \nabla_\del{i}\del{j} \right)(p) \right) &= f_{*p}\left(
+%    \Gamma^k_{ij}(p)\del{k}\Big|_p \right) \\
+%    &= \Gamma^k_{ij}(p) f_{*p}\left( \del{k}\Big|_p \right) = \tilde
+%    \Gamma^k_{ij}\left( f(p) \right)\dd{y^k}{}\Big|_{f(p)} \\
+%    &= \left( \nabla_{\dd{y^i}{}}\dd{y^j}{} \right)\left( f(p) \right)
+  \end{align*}
+  und damit
+
+  \begin{align*}
+    f_{*p}\left( \left( \nabla_XY \right)(p) \right) &= f_{*p}\left( \left(
+    \xi^i(p) \dd{x^i}{\eta^k}(p) + \Gamma^k_{ij}(p)\xi^i\eta^j(p)
+    \right)\del{k}
+    \right) \\
+    &= \left( \xi^i(p)\frac{\partial \eta^k}{\partial x^i}(p) +
+    \Gamma^k_{ij}(p)\xi^i(p)\eta^j(p) \right)\dd{y^j}{f(p)} \\
+    &= \left( \nabla_{\tilde X}\tilde Y \right)\left( f(p) \right)
+  \end{align*}
+\end{proof}
+
+\begin{flg}
+  Falls $f:M\to N$ lokale Isometrie ist, $c:I\to M$ Kurve und $X$ ein Vektorfeld
+  längs $c$, so ist $f_*X$ ein Vektorfeld längs $f\circ c$ und $(f_*X)' =
+  f_*X'$.
+  \begin{proof}
+    Sei $J\subset I$ ein Teilintervall mit $f(J)\subset U'$ wobei $x,U',y,V'$
+    wie oben. Auf $J$ ist dann $X = \xi^i\left( \del{i}\circ c \right)$, 
+    % ------------------------------
+  \end{proof}<++>
+\end{flg}
+
+
 \end{document}
